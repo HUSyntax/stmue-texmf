@@ -1,0 +1,58 @@
+2009-02-06
+
+- changed the behavior of \fuberlinlogon so it
+  can be used to resize the logo in order to
+  gain some space for overfull slides.
+  SEE fu-beamer-doc.txt BEFORE USING IT !!!
+
+  *** COMPATIBILTY WITH OLDER DOCUMENTS
+  *** IS BROKEN IF THESE USE \fuberlinlogon
+  *** WITHOUT THE NOW OBLIGATORY ARGUMENT
+
+-------------------------------------------
+
+2009-02-05
+
+- fixed bug in [handout] mode
+
+-------------------------------------------
+
+2009-01-15
+
+- optimized [handout] mode
+
+-------------------------------------------
+
+2008-12-06
+
+- now using graphicx-psmin to avoid logo being
+  inserted on every page in the ps
+  => DON'T INCLUDE graphicx/graphics MANUALLY!
+  => NOT TESTED WITH graphics INSTEAD OF graphicx .
+
+-------------------------------------------
+
+2008-11-13
+
+- content of repository "latex" and "texmf"
+  moved to one repo "texstuff"; only check out
+  "texstuff" from now on
+
+-------------------------------------------
+
+2008-10-07
+
+- Now uses \savebox to insert the logo. Definition
+  of a logo with \logo is no longer allowed, the FU
+  standard logo is used automatically, a 'fu_dgm_logo'
+  (eps, png, etc.) must be findable by TeX.
+
+-------------------------------------------
+
+2008-06-30
+
+- Removed "fuberlinbeamerincludes.tex".
+  Don't include it anymore, it's part of the theme now!
+- Killed some space above the frame title
+  to make more room per frame
+- Page numbers possibly not working due to ongoing work.

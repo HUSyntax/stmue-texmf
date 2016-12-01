@@ -1,0 +1,64 @@
+% Stefan Müller, CL, Uni Bremen, 2006
+%
+% Sets parameters and includes packages according to the
+% style files of Language of 23.03.2006.
+
+\usepackage{submit}
+
+% use Koma Script, i.e \documentclass[a4paper,10pt]{scrartcl}
+
+
+\usepackage{titlesec}
+
+\setcounter{secnumdepth}{2}
+\let\subsubsection\paragraph
+
+
+\newcommand{\periodafter}[1]{#1.}
+
+\titleformat{\section}[runin]{\normalfont\scshape}{\orgtextbf{\thesection.}}{1ex}{\periodafter}
+\titleformat{\subsection}[runin]{\normalfont\scshape}{\orgtextbf{\thesubsection.}}{1ex}{\periodafter}
+\titleformat{\paragraph}[runin]{\normalfont\scshape}{}{1em}{\periodafter}
+
+
+%% \setkomafont{section}{\normalsize\scshape}
+%% \setkomafont{subsection}{\normalsize\scshape}
+
+%\setkomafont{paragraph}{\uline}
+
+%\addtokomafont{sectioning}{\bfseries}
+
+
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+\ohead{\pagemark}
+\ihead{}
+\cfoot{}
+\ofoot[]{}
+\ifoot{}
+
+
+% stuff for the bibliography
+%\usepackage{lsalike}
+
+
+
+% replace-regexp: (\\mex{\([0-9]*\)}\([a-z]*\))            \\mex{\1}\2
+%                 (\\ref{\([a-zA-Z0-9\-]*\)}\([a-z]*\))    \\ref{\1}\2     
+
+
+% use with natbib.sty
+% gives us Kay (1998:19) instead of Kay (1998, 19)
+\bibpunct[:]{(}{)}{,}{a}{}{,}
+
+
+
+\renewcommand{\xbart}{X$'$ Theo\-ry\xspace}
+\renewcommand{\xbar}{X$'$\xspace}
+
+
+\renewcommand{\page}{}
+
+
+% only used when Pollard \biband Sag is written in the text.
+\renewcommand{\biband}{\&\xspace}

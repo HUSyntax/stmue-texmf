@@ -1,0 +1,120 @@
+HU Beamer is based on Roland Schäfer's styles for FU presentations.
+
+It has been adapted to xelatex. Do not use dvips and ps2pdf.
+
+
+FU Beamer Documentation
+<roland.schaefer@fu-berlin.de>
+
+
+*************
+*** RULES ***
+*************
+
+
+- ALWAYS USE DVIPS as backend driver when rendering, i.e. always use the
+render chain LATEX -> DVIPS -> PS2PDF (and not PDFLATEX)!
+
+
+- Don't include graphicx manually.
+- Don't include ifthen manually
+- Don't use graphics instead of graphicx.
+- Don't change inner/outer/color/font... themes manually.
+- Don't use deprecated options like [blackandwhite]
+- Make sure that all included FU logo files are TeX-accessible.
+  [After SVN checkout, find them in: \texmf\tex\latex\fuberlin]
+
+
+- To us the FU beamer style, just do:
+   \documentclass{beamer} or \documentclass[handout]{beamer}
+   \usetheme{FUBerlin}
+
+
+- ... and, if you want a title graphic:
+   \titlegraphic{\includegraphics[height=3cm]{fu_dgm}}
+  where fu_dgm is the included (and ugly) default eps file.
+
+
+***************
+*** OPTIONS ***
+***************
+
+Using [handout] option makes *everything* black-and-white, including rules and list arrows etc. It also changes the beavior of \alert to just \textbf.
+
+
+
+*****************************
+*** USER-COMMANDS/OPTIONS ***
+*****************************
+
+
+1. Things to set with \renewcommand
+
+
+\fuberlinfootstring
+Reset this to change the contents of the left-hand part of the footer. See below for predefined versions.
+
+
+\fuberlinpagestring
+Reset this to change the contents of the right-hand part of the footer (default: SLIDENUMBER/SLIDECOUNT). See below for predefined versions.
+
+
+
+2. Variables
+
+
+\fuberlintitlestrut=... [DEFAULT: 0, RANGE: -n/+n pt]
+Manipulate the horizontal position of the title graphics.
+
+
+
+3. Simple commands to change the appearance of slides
+
+[These are like mode commands. They set an option until it is explicitly set otherwise, e.g. back to the "normal" variant.]
+
+
+\fuberlinnormalfootline [DEFAULT]
+Switches on the default footer.
+
+
+\fuberlinvoidfootline
+NO footer at all, not even a \rule.
+
+
+\fuberlinjustbarfootline [DEPRECATED!]
+Same as \fuberlinvoidfootline.
+
+
+\fuberlinemptyfootline
+Just a \rule, no footer text.
+
+
+\fuberlinlogon{ARG1} [DEFAULT], ARG
+Switches the header logo on. It hast to be specified with a height for the logo graphics.
+ARG1 can be used to resize the logo and thus give extra space for overfull slides. However, if this is what you want, you have to specify it *before* you say \begin{document} to allow beamer to calculate the header size based on newly provided measure.
+
+Ex: To gain .1cm by making the header less high, do:
+
+   \fuberlinlogon{.9cm}
+   \begin{document}
+
+
+\fuberlinlogoff
+Switches the header logo off.
+
+
+\fuberlinnormalheader [DEFAULT]
+Switches on the default header with logo and navigation tree.
+
+
+\fuberlinemptyheader
+Switches off the header completely (not even a \rule).
+
+
+\fuberlintitlepage
+Inserts a fully fledged title page.
+
+
+\fuberlinpagedec
+Decrease the page counter by 1.
+

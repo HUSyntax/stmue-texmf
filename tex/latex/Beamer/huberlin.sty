@@ -1,0 +1,117 @@
+\usepackage{textpos}
+\usepackage{xcolor}
+\usepackage{multicol}
+
+% Präsentationsthemen bestimmen alle Details einer Folie.
+
+% \usetheme{
+% 	AnnArbor | Antibes | Bergen |
+% 	Berkeley | Berlin | Boadilla |
+% 	boxes | CambridgeUS | Copenhagen |
+% 	Darmstadt | default | Dresden |
+% 	Frankfurt | Goettingen |Hannover |
+% 	Ilmenau | JuanLesPins | Luebeck |
+% 	Madrid | Malmoe | Marburg |
+% 	Montpellier | PaloAlto | Pittsburgh |
+% 	Rochester | Singapore | Szeged |
+% 	Warsaw
+% }
+%\usetheme{Boadilla}
+%\usetheme{Berlin}
+\usetheme{Madrid}
+
+
+%Farbthemen bestimmen die Farben einer Folie.
+
+% \usecolortheme{
+% 	albatross | beaver | beetle |
+% 	crane | default | dolphin |
+% 	dove | fly | lily | orchid |
+% 	rose |seagull | seahorse |
+% 	sidebartab | structure |
+% 	whale | wolverine
+% }
+
+%\usecolortheme{dolphin}
+
+%%Die Themen für Schriftzeichen bestimmen die Schriftart.
+
+% \usefonttheme{
+% 	default | professionalfonts | serif |
+% 	structurebold | structureitalicserif |
+% 	structuresmallcapsserif
+%	}
+
+%\usefonttheme{professionalfonts}
+
+%Innere Themen spezifizieren die inneren Elemente wie Kopf-, Fußzeile, Sidebar usw. einer Folie.
+
+% \useinnertheme{
+% 	circles | default | inmargin |
+% 	rectangles | rounded
+% }
+
+\useinnertheme{rounded}
+
+% \useoutertheme{
+% 	default | infolines | miniframes |
+% 	shadow | sidebar | smoothbars |
+% 	smoothtree | split | tree
+% }
+%\useoutertheme{miniframes}
+
+
+%\setbeamercovered{transparent}
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{footline}[frame number]
+
+\definecolor{HuBlue}{RGB}{0,55,108}
+\definecolor{HuGreen}{RGB}{0,87,44}
+%\definecolor{HuAlert}{RGB}{138,15,20} %corporate design
+\definecolor{HuAlert}{RGB}{251,63,62} %schöner
+%\definecolor{HuAlert}{RGB}{219,100,29} %orangelicher
+%\definecolor{HuAlert}{RGB}{232,147,28} %noch orangelicher
+
+%\setbeamercolor{title}{fg=HuBlue!80!white}
+\setbeamercolor{title}{fg=white}
+%\setbeamercolor{frametitle}{fg=HuBlue}
+\setbeamercolor{frametitle}{fg=white}
+%\setbeamercolor{structure}{fg=HuAlert}
+\setbeamercolor{structure}{fg=HuBlue}
+\setbeamercolor*{item}{fg=HuBlue}
+
+\setbeamercolor{alerted text}{fg=HuAlert}
+
+
+%\addtobeamertemplate{frametitle}{}{%
+% \begin{textblock}{⟨hsize⟩}(⟨hpos⟩,⟨vpos⟩)
+% text...
+% \end{textblock}
+% The text in the environment will be set in a box ⟨hsize⟩ modules wide, and placed on the page with its upper left corner at the position (hpos,vpos).
+%\begin{textblock*}{100mm}(.87\textwidth,-.2cm)
+%\includegraphics[height=1.5cm,width=1.5cm]{husiegel_bw}
+%\end{textblock*}}
+
+
+%%% HU-Logo (hukombi_bwb, hukombi_bwb.ps or hukombi_bwb_rgb)
+%
+%% To insert HU-Logo for PDFLaTeX uncomment the following lines
+\newcommand{\HUtitle}{\vspace{3cm}
+	\maketitle
+\begin{textblock*}{2cm}(.35cm,-8cm)
+  \includegraphics[scale=.48]{../hukombi_bwb}
+\end{textblock*}}
+
+%% To insert HU-Logo for XeLaTeX uncomment the following lines (.ps-ending necessary!)
+%\newcommand{\HUtitle}{\vspace{3cm}
+%	\maketitle
+%\begin{textblock*}{2cm}(.35cm,-8cm)
+%  \includegraphics[scale=.48]{../hukombi_bwb.ps}
+%\end{textblock*}}
+
+%% To insert HU-Logo for LaTeX uncomment the following lines
+\newcommand{\HUtitleEPS}{\vspace{3cm}
+	\maketitle
+\begin{textblock*}{2cm}(.35cm,-8cm)
+  \includegraphics[scale=.48]{../hukombi_bwb_rgb}
+\end{textblock*}}

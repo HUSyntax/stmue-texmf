@@ -1,0 +1,169 @@
+% Copyright 2007 by Till Tantau
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+\ProvidesPackageRCS $Header: /cvsroot/latex-beamer/latex-beamer/themes/theme/beamerthemedefault.sty,v 1.7 2007/01/28 20:48:30 tantau Exp $
+
+%----- begin hacks -----%
+
+% Roland Schäfer's hacks for the FUBerlin beamer style
+% Send comments and suggestions to:
+% roland.schaefer@fu-berlin.de
+%
+\usepackage{ifthen}
+%
+% grahicx-psmin makes sure that the logo is included only once in the ps file
+\usepackage{graphicx}
+%\usepackage{graphicx-psmin}
+% there is a corresponding \loadgraphics command in the mode-specific sections
+
+% we put the logo in a saved box and fill it with our CD graphics by default
+\newsavebox{\fuberlininsertlogo}
+% end savebox -- actual graphics insertion see mode-specific section
+
+% commands for title/footer insertion
+\newcommand{\fuberlinfootstring}{\copyright{} \insertshortauthor{} \number\year, \insertshortinstitute}
+\newcommand{\fuberlinpagestring}{\insertframenumber/\insertpresentationendpage}
+
+% two switches (implemented as counters -- I'm really just hacking here!)
+% which control header/footer behavior:
+\newcount\fuberlinswitch
+\fuberlinswitch=0
+
+\newcount\fuberlinheadbarswitch
+\fuberlinheadbarswitch=0
+
+% we can h-align the title graphics if neede by manip'ing this strut:
+\newdimen\fuberlintitlestrut
+\fuberlintitlestrut=0pt
+
+% useful macro commands to switch things on/off
+\newcommand{\fuberlinvoidfootline}{%
+  \setbeamertemplate{footline}%
+  {%
+    \leavevmode%
+   	\vskip0pt%
+  }%
+}%
+
+\newcommand{\fuberlinemptyfootline}{%
+  \setbeamertemplate{footline}%
+  {%
+    \leavevmode%
+	    \begin{beamercolorbox}[wd=\paperwidth,ht=.2cm,dp=1.125ex]{normal text}%
+ 	       {\color{structure}\rule{\paperwidth}{.2mm}}%
+ 	   \end{beamercolorbox}\vskip-1mm\par%
+ 	   \hbox{\begin{beamercolorbox}[wd=.9\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm]{normal text}%
+ 	     \usebeamerfont{author in head/foot}% empty line here
+ 	   \end{beamercolorbox}%
+ 	   \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{normal text}%
+ 	     \usebeamerfont{title in head/foot} \fuberlinpagestring
+ 	   \end{beamercolorbox}}%
+   	 \vskip0pt%
+  }%
+}%
+
+\newcommand{\fuberlinjustbarfootline}{%
+  \setbeamertemplate{footline}%
+  {%
+    \leavevmode%
+	    \begin{beamercolorbox}[wd=\paperwidth,ht=.2cm,dp=1.125ex]{normal text}%
+ 	       {\color{structure}\rule{\paperwidth}{.2mm}}%
+ 	   \end{beamercolorbox}\vskip-1mm\par%
+ 	   \hbox{\begin{beamercolorbox}[wd=.9\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm]{normal text}%
+ 	     \usebeamerfont{author in head/foot}% 
+ 	   \end{beamercolorbox}%
+ 	   \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{normal text}%
+ 	     \usebeamerfont{title in head/foot}% 
+ 	   \end{beamercolorbox}}%
+   	 \vskip0pt%
+  }%
+}%
+
+\newcommand{\fuberlinnormalfootline}{%
+  \setbeamertemplate{footline}
+  {%
+    \leavevmode%
+	    \begin{beamercolorbox}[wd=\paperwidth,ht=.2cm,dp=1.125ex]{normal text}%
+ 	       {\color{structure}\rule{\paperwidth}{.2mm}}%
+ 	   \end{beamercolorbox}\vskip-1mm\par%
+ 	   \hbox{\begin{beamercolorbox}[wd=.9\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm]{normal text}%
+ 	     \usebeamerfont{author in head/foot}\fuberlinfootstring
+ 	   \end{beamercolorbox}%
+ 	   \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{normal text}%
+ 	     \usebeamerfont{title in head/foot} \fuberlinpagestring
+ 	   \end{beamercolorbox}}%
+   	 \vskip0pt%
+  }%
+}%
+
+\newcommand{\fuberlinnormalheader}{%
+	\fuberlinswitch=0
+}%
+
+\newcommand{\fuberlinemptyheader}{%
+	\fuberlinswitch=1
+}%
+
+\newcommand{\fuberlinpagedec}{%
+  \addtocounter{framenumber}{-1}
+}%
+
+\newcommand{\fuberlinheaderbaroff}{%
+	\fuberlinheadbarswitch=1
+}%
+
+\newcommand{\fuberlinheaderbaron}{%
+	\fuberlinheadbarswitch=0
+}%
+
+% use this new command to insert a fully fledged title page:
+\newcommand{\fuberlintitlepage}[1][0pt]{%
+	\fuberlinvoidfootline% totally absent footline
+	\fuberlinemptyheader%	switches off title and tree in header
+	\fuberlinheaderbaroff
+	\fuberlintitlestrut=#1
+	\frame{\titlepage}
+	\fuberlinheaderbaron
+	\fuberlinnormalheader% normal header w/ title and tree
+	\fuberlinnormalfootline
+	\fuberlinpagedec
+}%
+
+%----- end hacks -----%
+
+\mode<presentation>
+
+\usefonttheme{fu}
+\usecolortheme{bear}
+\useinnertheme{fui}
+\useoutertheme{fuo}
+
+% insert the COLOR FU logo
+%\loadgraphics{fu_dgm_logo}
+\savebox{\fuberlininsertlogo}{\includegraphics[height=1.0cm]{fu_dgm_logo}}
+
+% these two commands allow you to set logo on/off wherever you want to:
+\newcommand{\fuberlinlogon}[1]{\savebox{\fuberlininsertlogo}{\includegraphics[height=#1]{fu_dgm_logo}}}
+\newcommand{\fuberlinlogoff}{\savebox{\fuberlininsertlogo}{}}
+
+\mode<handout>
+
+% insert the B/W FU logo
+%\loadgraphics{FULogoBW}
+\savebox{\fuberlininsertlogo}{\includegraphics[height=1cm]{FULogoBW}}
+
+% these two commands allow you to set logo on/off wherever you want to:
+\renewcommand{\fuberlinlogon}[1]{\savebox{\fuberlininsertlogo}{\includegraphics[height=#1]{FULogoBW}}}
+\renewcommand{\fuberlinlogoff}{\savebox{\fuberlininsertlogo}{}}
+
+% to keep \alert markings in handout mode and make them readable, make them bold
+\renewcommand{\alert}{\textbf}
+
+\mode
+<all>

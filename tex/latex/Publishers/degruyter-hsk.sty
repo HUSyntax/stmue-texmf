@@ -1,0 +1,99 @@
+\usepackage{amsthm}
+
+% Create a `custom` theorem style.
+\newtheoremstyle{custom}
+  {\topsep}   % Space above
+  {\topsep}   % Space below
+  {\itshape}  % Body font
+  {0pt}       % Indent amount (empty value is the same as 0pt)
+  {}          % Theorem head font
+  {}          % Punctuation after theorem head
+  {5pt plus 1pt minus 1pt} % Space after theorem head
+  {\thmname{#1}\thmnumber{ #2}.\thmnote{ (#3)}} % Theorem head spec
+
+% Create a `theorem` environment using the `custom` style.
+\theoremstyle{custom}
+
+\newtheorem{principle}{Principle}
+\newtheorem{schema}{Schema}
+
+
+
+\usepackage[sectionbib]{natbib}\let\bibfont=\small
+
+% This does not work ...
+%% \setcitestyle{
+%% notesep={: }, % 2002: 125
+%% aysep={~}     % Gazdar 2002
+%% }
+
+\bibpunct[: ]{(}{)}{;}{a}{}{,}
+\let\citew=\citet
+
+% separate bibliographic entries by at least two carriage returns
+\setlength{\bibsep}{5mm}
+
+
+\usepackage{abstract}
+
+%% \makeatletter
+%% \renewenvironment{abstract}{%
+%%   \if@titlepage
+%%     \titlepage
+%%     \null\vfil
+%%     \@beginparpenalty\@lowpenalty
+%%     \if@abstrt
+%%       \begin{flushleft}
+%%         \normalfont\sectfont\nobreak\abstractname
+%%         \@endparpenalty\@M
+%%       \end{flushleft}
+%%     \fi
+%%   \else
+%%     \if@twocolumn\if@abstrt
+%%         \addsec*{\abstractname}
+%%       \fi
+%%       \quotation
+%%     \else
+%%       \if@abstrt
+%%         \par\small\noindent%
+%%           {\normalfont\sectfont\nobreak\abstractname\par\vspace{.5em}}%
+%%       \fi
+%%     \fi
+%%   \fi
+%% }{%
+%%   \if@titlepage
+%%     \par\vfil\null\endtitlepage
+%%   \else
+%%     \if@twocolumn\else\endquotation\fi
+%%   \fi
+%% }
+%% \makeatother
+
+
+\usepackage{scrpage2}
+\ohead{\pagemark}
+\ihead{\headmark}
+\cfoot{}
+\ofoot[]{}
+%\ifoot{Draft of \today, \currenttime}
+
+\pagestyle{scrheadings}
+
+
+
+\newcommand{\page}{}
+
+
+\renewcommand\refname{References (selected)}
+
+\renewcommand\contentsname{Table of Contents}
+
+
+%\renewcommand{\exfont}{\it}
+\let\eachwordone=\it
+
+
+
+% no page numbers into TOC
+\let\Contentsline\contentsline
+\renewcommand\contentsline[3]{\Contentsline{#1}{#2}{}}
