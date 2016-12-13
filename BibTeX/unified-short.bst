@@ -963,8 +963,8 @@ FUNCTION {article}
       format.pages output
     }
   if$
-  format.doi output
-  new.block
+%  format.doi output
+%  new.block
 %  format.url output
 %  new.block
   format.note output
@@ -999,8 +999,8 @@ FUNCTION {book}
     }
   if$
   format.edition output
-  format.doi output
-  new.block
+%  format.doi output
+%  new.block
 %  format.url output
 %  new.block
   format.note output
@@ -1016,8 +1016,8 @@ FUNCTION {booklet}
   new.block
   howpublished "howpublished" bibinfo.check output
   address "address" bibinfo.check output
-  format.doi output
-  new.block
+%  format.doi output
+%  new.block
 %  format.url output
 %  new.block
   format.note output
@@ -1056,8 +1056,8 @@ FUNCTION {inbook}
     }
   if$
   format.edition output
-  format.doi output
-  new.block
+%  format.doi output
+%  new.block
 %  format.url output
 %  new.block
   format.note output
@@ -1086,8 +1086,8 @@ FUNCTION {incollection}
       format.chapter.pages output
     }
   if$
-  format.doi output
-  new.block
+%  format.doi output
+%  new.block
 %  format.url output
 %  new.block
   format.note output
@@ -1119,8 +1119,8 @@ FUNCTION {inproceedings}
       format.pages output
     }
   if$
-  format.doi output
-  new.block
+%  format.doi output
+%  new.block
 %  format.url output
 %  new.block
   format.note output
@@ -1138,8 +1138,8 @@ FUNCTION {manual}
   organization "organization" bibinfo.check output
   address "address" bibinfo.check output
   format.edition output
-  format.doi output
-  new.block
+%  format.doi output
+%  new.block
 %  format.url output
 %  new.block
   format.note output
@@ -1158,8 +1158,8 @@ FUNCTION {mastersthesis}
   address "address" bibinfo.check output
   school "school" bibinfo.warn output
   bbl.mthesis format.thesis.type output.nonnull
-  format.doi output
-  new.block
+%  format.doi output
+%  new.block
 %  format.url output
 %  new.block
   format.note output
@@ -1195,8 +1195,8 @@ FUNCTION {phdthesis}
   add.colon
   school "school" bibinfo.warn output
   bbl.phdthesis format.thesis.type output.nonnull
-  format.doi output
-  new.block
+%  format.doi output
+%  new.block
 %  format.url output
 %  new.block
   format.note output
@@ -1219,8 +1219,8 @@ FUNCTION {proceedings}
       format.publisher.address output
     }
   if$
-  format.doi output
-  new.block
+%  format.doi output
+%  new.block
 %  format.url output
 %  new.block
   format.note output
@@ -1239,8 +1239,8 @@ FUNCTION {techreport}
   format.tr.number output.nonnull
   institution "institution" bibinfo.warn output
   address "address" bibinfo.check output
-  format.doi output
-  new.block
+%  format.doi output
+%  new.block
 %  format.url output
 %  new.block
   format.note output

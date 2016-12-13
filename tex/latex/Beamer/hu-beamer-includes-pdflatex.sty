@@ -27,7 +27,8 @@
 \renewcommand{\huberlinpagestring}{\insertframenumber/\inserttotalframenumber}
 \newcounter{lastpagemainpart}
 
-\usepackage[utf8x]{inputenc}
+% xelatex
+%\usepackage[utf8x]{inputenc}
 
 % muß vor my-commands geladen werden, wegen \dh
 %\lightning
@@ -342,12 +343,14 @@ langsci-lgr,makros.2e,oneline}
 %\beamerdefaultoverlayspecification{<+->}
 %\beamerdefaultoverlayspecification{<+->}
 
+\usepackage[T1]{fontenc}
+
 \author[Stefan Müller]{%
   Stefan Müller}
 \iflanguage{german}{%
 \institute[HU Berlin, Institut für deutsche Sprache und Linguistik, Syntax]{
   Sprachwissenschaft des Deutschen / Syntax\\
-  Institut f{\"u}r deutsche Sprache und Linguistik\\
+  Institut für deutsche Sprache und Linguistik\\
   Philosophische Fakultät II\\
   HU Berlin\\[2mm]
 St.Mueller@hu-berlin.de}
