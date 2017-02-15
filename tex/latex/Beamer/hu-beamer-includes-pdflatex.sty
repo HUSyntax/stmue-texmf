@@ -52,7 +52,7 @@
 %\usepackage{times}
 
 \usepackage{article-ex,
-langsci-lgr,makros.2e,oneline}
+langsci-lgr,oneline}
 
 \usepackage{my-gb4e-slides}
 
@@ -64,17 +64,49 @@ langsci-lgr,makros.2e,oneline}
 %\usepackage{ngerman} % Dann kommt Literatur statt References raus.
 \usepackage{german}
 
+% makros loads abbreviations and since these use "= it has to be loaded after
+% german
+\usepackage{makros.2e}
+
 %\usepackage{comment} % remove later
 
 \iflanguage{german}{
 \usepackage{de-date}}{
 \usepackage{eng-date}}
 
+% If we are in handout mode, do 4up.
+\mode<handout>{
+\usepackage{pgfpages}
+
+\pgfpagesuselayout{4 on 1}[a4paper, border shrink=5mm, landscape]
+
+\pgfpageslogicalpageoptions{1}{border code=\pgfusepath{stroke},
+% resized height=.65\pgfphysicalheight,
+% resized width=.65\pgfphysicalwidth, 
+  center = \pgfpoint{.275\pgfphysicalwidth}{.74\pgfphysicalheight}
+}
+\pgfpageslogicalpageoptions{2}{border code=\pgfusepath{stroke},
+% resized height=.65\pgfphysicalheight,
+% resized width=.65\pgfphysicalwidth,
+  center = \pgfpoint{.725\pgfphysicalwidth}{.74\pgfphysicalheight}
+}
+\pgfpageslogicalpageoptions{3}{border code=\pgfusepath{stroke},
+% resized height=.65\pgfphysicalheight,
+% resized width=.65\pgfphysicalwidth,
+  center = \pgfpoint{.275\pgfphysicalwidth}{.26\pgfphysicalheight}
+}
+\pgfpageslogicalpageoptions{4}{border code=\pgfusepath{stroke},
+% resized height=.65\pgfphysicalheight,
+% resized width=.65\pgfphysicalwidth,
+ center = \pgfpoint{.725\pgfphysicalwidth}{.26\pgfphysicalheight}
+}
+}
 
 % what does this do?
 %\mode<handout>{
 %\let\url\HyOrg@url
 %}
+
 
 
 % (34) Er schläft. -> Abstand zwischen `)' und `E'
