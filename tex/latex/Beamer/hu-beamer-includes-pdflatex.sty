@@ -15,6 +15,7 @@
 
 \usetheme{HUBerlin}
 
+\usepackage{url}
 \urlstyle{same}
 
 \usepackage{fontspec}
@@ -39,20 +40,10 @@
 \usepackage{mycommands}%\spacebr
 
 
+
 % this breaks the length computation for tables that is needed in CCG
 % CCG uses \hfillrule to cover the whole area of a table cell. St. Mü. 20.1.2008
 \usepackage{colortbl}
-
-%\usepackage[german]{babel}
-%\usepackage{ngerman} % Dann kommt Literatur statt References raus.
-\usepackage{german}
-
-
-
-\iflanguage{german}{
-\usepackage{de-date}}{
-\usepackage{eng-date}}
-
 
 
 %\usepackage{lmodern}
@@ -65,7 +56,19 @@ langsci-lgr,makros.2e,oneline}
 
 \usepackage{my-gb4e-slides}
 
-\usepackage{forest-v105}
+%\usepackage{forest-v105}
+\usepackage{langsci-forest-setup}
+
+
+%\usepackage[german]{babel}
+%\usepackage{ngerman} % Dann kommt Literatur statt References raus.
+\usepackage{german}
+
+%\usepackage{comment} % remove later
+
+\iflanguage{german}{
+\usepackage{de-date}}{
+\usepackage{eng-date}}
 
 
 % what does this do?
