@@ -1,0 +1,594 @@
+%% -*- coding:utf-8 -*-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%   $RCSfile: fu-beamer-includes.sty,v $
+%%  $Revision: 1.1 $
+%%      $Date: 2008/06/04 08:57:58 $
+%%     Author: Stefan Mueller (Stefan.Mueller@cl.uni-bremen.de)
+%%    Purpose: includes for presentations 
+%%             with the latex-beamer class
+%%   Language: LaTeX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\input{fuberlinbeamerincludes}
+
+\usepackage{etex}
+
+\usetheme{FUBerlin}
+
+\urlstyle{same}
+
+%\logo{\includegraphics[height=1cm]{fu_dgm_logo}}
+\titlegraphic{\includegraphics[height=3cm]{fu_dgm}}
+
+\renewcommand{\fuberlinpagestring}{\insertframenumber/\inserttotalframenumber}
+\newcounter{lastpagemainpart}
+
+% Das geht irgendwie nicht 
+\usepackage[latin1,utf8x]{inputenc}
+
+% muß vor my-commands geladen werden, wegen \dh
+%\lightning
+\usepackage{wasysym}
+
+
+% this breaks the length computation for tables that is needed in CCG
+% CCG uses \hfillrule to cover the whole area of a table cell. St. Mü. 20.1.2008
+\usepackage{colortbl}
+
+%\usepackage[german]{babel}
+%\usepackage{ngerman} % Dann kommt Literatur statt References raus.
+\usepackage{german}
+
+%\usepackage{graphics}
+
+
+
+\iflanguage{german}{
+\usepackage{de-date}}{
+\usepackage{eng-date}}
+
+
+
+%\usepackage{lmodern}
+%\usepackage[T1]{fontenc} 
+
+%\usepackage{times}
+
+% mycommands redefines \dh, it has to be loaded after babel
+
+\usepackage{article-ex,
+langsci-lgr,makros.2e,oneline,
+%de-commands,
+mycommands,comment,
+tree-dvips,my-gb4e-slides}
+
+
+\usepackage{tikz-qtree}
+% has strange side effects
+%\tikzset{every tree node/.style={align=left, anchor=north}}
+\tikzset{every roof node/.append style={inner sep=0.1pt,text height=2ex,text depth=0.3ex}}
+
+\usepackage{forest-v105}
+
+%\usepackage[latin1]{inputenc}
+%\usepackage[utf8]{inputenc}
+
+
+
+\mode<handout>{
+\let\url\HyOrg@url
+}
+
+
+% (34) Er schläft. -> Abstand zwischen `)' und `E'
+% this is the default
+% \gblabelsep{1em}
+
+% (34) a. Er schläft. -> Abstand zwischen `.' und  `E'
+% this is the default
+%\subexsep{1.5ex}
+
+\newcommand{\savespace}{\setlength\leftmargini{1em}\subexsep{.5ex}\gblabelsep{.5ex}\exewidth{\exnrfont(\theequation)}}
+
+% Define commands for fonts to be used:
+%
+% 1) regular
+% a. example line
+\newcommand{\exfont}{\normalsize\upshape}
+% b. glossing line
+\newcommand{\glossfont}{\normalsize\upshape}
+% c. translation font
+\newcommand{\transfont}{\small\upshape}
+% d. example number
+\newcommand{\exnrfont}{\exfont\upshape}
+%
+% 2) in footnote
+% a. example line
+\newcommand{\fnexfont}{\footnotesize\upshape}
+% b. glossing line
+\newcommand{\fnglossfont}{\footnotesize\upshape}
+% c. translation font
+\newcommand{\fntransfont}{\scriptsize\upshape}
+% d. example number
+\newcommand{\fnexnrfont}{\fnexfont\upshape}
+
+% new user command for specifying translations:
+%\newcommand{\mytrans}[1]{{\trans`#1'}\vskip.6\baselineskip}
+
+% ---------------------------------------------------------------
+% only internal stuff below this line:
+
+% -------------------
+
+% define internal commands relative to these new font specifications
+\def\ex{\@ifnextchar [{\exnrfont\@ex}{\item\exfont}}
+\def\@ex[#1]#2{\item\@exj[#1]{\exfont#2}}
+
+\def\@exjbg#1{\begin{list}{{\exnrfont#1}}{\@subex{\@jwidth}{.5ex}}\item}
+\def\exi#1{\item[{\exnrfont#1}]\@ifnextchar [{\exnrfont\@exj}{}}
+
+\def\ea{\ifnum\@xnumdepth=0\begin{exe}\else\begin{xlist}[iv.]\fi\ex}
+\def\eal{\begin{exe}\exnrfont\ex\begin{xlist}[iv.]}
+
+
+\renewcommand\trans{\nopagebreak\vskip.25\baselineskip\transfont\parindent0ex}
+% Note that we have also set parindent to 0 in our redefinition of \trans
+
+\renewcommand{\eachwordone}{\exfont}
+\renewcommand{\eachwordtwo}{\glossfont}
+\renewcommand{\eachwordthree}{\glossfont} % same font for both gloss lines
+
+\newcommand{\smallexamples}{\renewcommand{\exfont}{\small\upshape}\renewcommand{\glossfont}{\small\upshape}%
+\exewidth{\exnrfont (\theequation)}}
+
+\newcommand{\footnotesizeexamples}{\renewcommand{\exfont}{\footnotesize\upshape}\renewcommand{\glossfont}{\footnotesize\upshape}%
+\exewidth{\exnrfont (\theequation)}}
+
+\newcommand{\tinyexamples}{\renewcommand{\exfont}{\tiny\upshape}\renewcommand{\glossfont}{\tiny\upshape}%
+\exewidth{\exnrfont (\theequation)}}
+
+% set initial sizes of example number and judgement sizes
+\exewidth{\exnrfont (0)}
+\judgewidth{*} % if wider judgements are needed, enlarge within papers
+
+\newcommand{\smallframe}{\small\smallexamples\savespace}
+\newcommand{\footnotesizeframe}{\footnotesize\footnotesizeexamples\savespace}
+
+% cl-slides (Bibliographie)
+\usepackage{multicol}
+\setlength{\columnseprule}{0pt}
+
+% why this? Is not part of texlive 2015 any more.
+%\usepackage{multind}
+
+% For a green structure color use:
+%\colorlet{structure}{green!50!black}
+
+
+%\usepackage{beamerthemeshadow}
+%\usepackage{beamerthemeplain}
+
+
+
+
+
+%%%%%%%%% Bibliography
+%%% has to be loaded after the beamer classes since they redefine section
+
+\usepackage[sectionbib]{natbib}
+\setlength{\bibsep}{1mm}
+
+%\renewcommand\bibsection{\section{\refname}}
+
+% cite somebodys work
+\let\citew=\citealp
+%\newcommand{\newblock}{}
+
+
+%%%% end Bibliography
+
+%\usepackage{pstricks}
+%\usepackage[usenames]{pstcol}
+\usepackage{pst-node}
+
+\newboolean{colorprint}
+\mode<beamer>{
+\setboolean{colorprint}{true}
+}
+\mode<handout>{
+\setboolean{colorprint}{false}
+}
+
+%\definecolor{YellowOrange}{cmyk}{0,0.42,1,0}
+%\DefineNamedColor{named}{YellowOrange}{cmyk}{0,0.42,1,0}
+\xdefinecolor{YellowOrange}{cmyk}{0,0.42,1,0}
+
+
+\beamertemplatenavigationsymbolsempty 
+
+%\beamertemplateballitem
+
+\newcommand{\beamertemplateblackdotitem}{%
+  \setbeamercolor{item}{parent=normal text}
+  \useitemizeitemtemplate{\small\raise0.5pt\hbox{\textbullet}}
+  \usesubitemizeitemtemplate{\footnotesize\raise0.5pt\hbox{\textbullet}}
+  \usesubsubitemizeitemtemplate{\footnotesize\raise0.5pt\hbox{\textbullet}}
+}
+
+\newcommand{\beamertemplateemptyfootbar}{%
+\usefoottemplate{%
+  \vbox{%
+    \tinycolouredline{structure!75}%
+       {}%
+    }}}
+
+
+%% \newcounter{lastpagemainpart}
+%% % use the following right before the appendix:
+%% %\makeatletter
+%% %\setcounter{lastpagemainpart}{\the\c@framenumber}
+%% %\makeatother
+%% \newcommand{\insertpresentationendframe}{\inserttotalframenumber}
+
+%% \newcommand{\beamertemplatecopyrightfootframenumber}{%
+%% \usefoottemplate{%
+%%   \vbox{%
+%%     \tinycolouredline{structure!75}%
+%%        {\color{white}\textbf{\copyright{} \insertshortauthor{} \number\year, \insertshortinstitute\hfill\insertframenumber/\hyperlink{lastframe}{\insertpresentationendframe}}}%
+%%     }}}
+%% %% \usefoottemplate{
+%% %%   \vbox{
+%% %%     \tinycolouredline{structure!75}
+%% %%        {\color{white}\textbf{\insertshortauthor\hfill\insertshortinstitute}}
+%% %%     \tinycolouredline{structure}
+%% %%        {\color{white}\textbf{\insertshorttitle}\hfill}
+%% %%     }}
+
+\iflanguage{german}{%
+\newcommand{\outlineheading}{Gliederung}
+}{%
+\newcommand{\outlineheading}{Outline}
+}
+
+
+\newcommand{\outline}[1]{%
+%\beamertemplateemptyfootbar%
+\fuberlinjustbarfootline
+\frame<beamer>{\frametitle{\outlineheading}#1}%
+%\beamertemplatecopyrightfootframenumber%
+\fuberlinnormalfootline 
+\fuberlinpagedec
+}
+
+% The same but without a heading
+\newcommand{\beamerframe}[1]{%
+\fuberlinjustbarfootline
+\frame<beamer>{#1}%
+%\frame{#1}% for slide creation
+\fuberlinnormalfootline 
+\fuberlinpagedec
+}
+
+
+% %% % use this definition, if you want to see the outlines in the handout
+% \renewcommand{\outline}[1]{%
+% %\beamertemplateemptyfootbar%
+% \fuberlinjustbarfootline
+% \frame{\frametitle{\outlineheading}#1}%
+% %\beamertemplatecopyrightfootframenumber%
+% \fuberlinnormalfootline 
+% \fuberlinpagedec
+% }
+
+
+
+
+\newcommand{\handoutframe}[1]{%
+\alt<handout>{
+\frame{#1}%
+}{%
+\addtocounter{framenumber}{1}%
+}
+}
+
+%% \renewcommand{\handoutframe}[1]{%
+%% \frame{#1}%
+%% }
+
+
+
+\newcommand{\showsingleitemframe}{\beamersetuncovermixins{}{\opaqueness<1->{50}}}
+
+% privious stuff is made a bit transparent
+% stuff to come is made invisible
+\newcommand{\dataframe}{\beamersetuncovermixins{}{\opaqueness<1->{50}}%
+\let\oldea\ea%
+\def\ea{\begin{uncoverenv}<+>\oldea}%
+\let\oldz\z%
+\def\z{\oldz\end{uncoverenv}}}
+
+%\beamertemplatecopyrightfootframenumber
+
+% colored dots in itemize
+%\beamertemplatedotitem
+
+% black dots in itemize
+\beamertemplateblackdotitem
+
+% less indentification for descriptions and newline
+\newcommand{\beamertemplatedescriptionwithnewline}{%
+\usedescriptionitemtemplate{\color{structure}\insertdescriptionitem}{1em}%
+}
+
+\beamertemplatedescriptionwithnewline
+
+% scheint ignoriert zu werden \usedescriptionitemofwidthas{0em}
+
+\newcommand{\beamertemplatenormaldescription}{%
+\usedescriptionitemtemplate{\color{structure}\insertdescriptionitem}{1em}%
+}
+
+% Makes all covered text quite transparent, but in a dynamic way. The longer it will take till the text is
+% uncovered, the stronger the transparency.
+%\beamertemplatetransparentcovereddynamic
+
+%Makes all covered text quite transparent.
+%\beamertemplatetransparentcovered
+
+%% \beamersetuncovermixins
+%%   {\opaqueness<1>{15}\opaqueness<2>{10}\opaqueness<3>{5}\opaqueness<4->{2}}
+%%   {\opaqueness<1->{15}}
+
+%Shows only the frame symbol as navigation symbol.
+%\beamertemplatenavigationsymbolsframe 
+
+%Shows only the page number in the footline.
+%\beamertemplatefootpagenumber
+
+
+
+%\beamertemplatenumberedballsectiontoc
+
+%\beamerdefaultoverlayspecification{<+->}
+%\beamerdefaultoverlayspecification{<+->}
+
+\author[Stefan Müller]{%
+  Stefan Müller}
+\iflanguage{german}{%
+\institute[FU Berlin, Philosophie und Geisteswissenschaften, Deutsche Grammatik]{
+  Deutsche Grammatik\\
+  Institut f{\"u}r Deutsche und Niederl{\"a}ndische Philologie\\
+  Fachbereich Philosophie und Geisteswissenschaften\\
+  FU Berlin\\[2mm]
+Stefan.Mueller@fu-berlin.de}
+}{%
+\institute[FU Berlin, German Grammar and General Linguistics]{
+  Deutsche Grammatik\\
+  Institut f{\"u}r Deutsche und Niederl{\"a}ndische Philologie\\
+  Fachbereich Philosophie und Geisteswissenschaften\\
+  FU Berlin\\[2mm]
+Stefan.Mueller@fu-berlin.de}
+}
+%\date[DLT 2003]{Developments in Language Theory Conference, 2003}
+
+%\pgfdeclaremask{tu}{beamer-tu-logo-mask}
+%\pgfdeclaremask{ur}{beamer-ur-logo-mask}
+%\pgfdeclareimage[mask=tu,width=0.6cm]{tu-logo}{beamer-tu-logo}
+%\pgfdeclareimage[mask=ur,width=1cm]{ur-logo}{beamer-ur-logo}
+
+%\logo{\vbox{\hbox to 1cm{\hfil\pgfuseimage{tu-logo}}\vskip0.1cm\hbox{\pgfuseimage{ur-logo}}}}
+
+%\beamersetleftmargin{0mm}
+%\beamersetrightmargin{0mm}
+
+% used to be 2em
+\setlength\leftmargini{1em}
+\setlength\leftmarginii{1em}
+\setlength\leftmarginiii{1em}
+
+\setbeamersize{text margin left=9pt,text margin right=9pt}
+
+%\newrgbcolor{blaucolor}{0 0 .8}
+\definecolor{blaucolor}{rgb}{0,0,.8}
+\definecolor{rotcolor}{rgb}{.8,0,0}
+%\definecolor{dimmedrot}{rgb}{.8,0,0}
+
+\definecolor{GoldenrodColor}{cmyk}{0,0.10,0.84,0}
+\definecolor{PeachColor}    {cmyk}{0,0.50,0.70,0}
+\definecolor{gruencolor}{rgb}{0,.8,.8}
+
+\mode<handout>{%
+\newcommand<>{\blau}[1]{#1}
+\newcommand<>{\rot}[1]{#1}
+\newcommand<>{\gruen}[1]{#1}
+\newcommand<>{\braun}[1]{#1}
+\newcommand<>{\goldenrod}[1]{#1}
+\newcommand<>{\peach}[1]{\only#2{#1}}
+\newcommand<>{\rotbf}[1]{\only#2{\textbf{#1}}}
+\newcommand<>{\gruenbf}[1]{\only#2{\textbf{#1}}}
+\newcommand<>{\blaubf}[1]{\only#2{\textbf{#1}}}
+\newcommand<>{\blauklammer}[1]{\only#2{[#1]}}
+\newcommand<>{\blauit}[1]{\only#2{\textit{#1}}}
+\newcommand<>{\rotsl}[1]{\only#2{\textsl{#1}}}
+\newcommand<>{\rotit}[1]{\only#2{\textit{#1}}}
+\newcommand<>{\gruensc}[1]{\only#2{\textsc{#1}}}
+\newcommand<>{\gruenit}[1]{\only#2{\textit{#1}}}
+\newcommand<>{\orange}[1]{#1}
+% \newcommand{\rot}[1]{\textcolor{red}{#1}}
+% \newcommand{\blau}[1]{\textcolor{blue}{#1}}
+% \newcommand{\gruen}[1]{\textcolor{green}{#1}}
+%\newcommand{\rotbf}[1]{\textcolor{red}{#1}}
+%\newcommand{\gruenbf}[1]{\textcolor{green}{#1}}
+%\newcommand{\blaubf}[1]{\textcolor{blue}{#1}}
+%\newcommand{\rotsl}[1]{\textcolor{red}{#1}}
+%\newcommand{\gruensc}[1]{\textcolor{green}{#1}}
+}
+
+\mode<beamer>{%
+%\newcommand{\blau}[1]{{\blaucolor #1}}
+%\newcommand{\blau}[1]{\textcolor{blaucolor}{#1}}
+%\newcommand{\blau}[1]{\textcolor{blue}{#1}}
+\newcommand<>{\blau}[1]{{\color#2{blue!70}#1}}%structure!20}#1}}
+\newcommand<>{\goldenrod}[1]{\alt#2{\textcolor{GoldenrodColor}{#1}}{#1}}
+\newcommand<>{\peach}[1]{\textcolor{PeachColor}{#1}}
+\newcommand<>{\rot}[1]{{\color#2{red!75!black}#1}}
+\newcommand<>{\braun}[1]{{\color#2{brown!75!black}#1}}
+\newcommand<>{\rotbf}[1]{\rot#2{#1}}
+\newcommand<>{\gruen}[1]{{\color#2{green!60!black}#1}}
+\newcommand<>{\gruenbf}[1]{\gruen#2{#1}}
+\newcommand<>{\blaubf}[1]{\blau#2{#1}}
+\newcommand<>{\blauklammer}[1]{\blau#2{#1}}
+\newcommand<>{\blauit}[1]{\blau#2{#1}}
+\newcommand<>{\rotsl}[1]{\rot#2{#1}}
+\newcommand<>{\rotit}[1]{\rot#2{#1}}
+\newcommand<>{\gruensc}[1]{\gruen#2{#1}}
+\newcommand<>{\gruenit}[1]{\gruen#2{#1}}
+\newcommand<>{\orange}[1]{{\color#2[rgb]{0.7,0.3,0}#1}}
+}
+
+%\definecolor{light}{gray}{.8}
+
+\mode<handout>%
+{   \newcommand{\graybox}[1]{%
+     \setlength{\fboxsep}{0pt}\fbox{%
+       \setlength{\fboxsep}{1pt}\colorbox{white}{\scriptsize #1}}}}
+\mode<beamer>{%
+   \newcommand{\graybox}[1]{%
+     \setlength{\fboxsep}{0pt}\fbox{%
+%       \setlength{\fboxsep}{1pt}\colorbox{light}{\scriptsize #1}}}}
+       \setlength{\fboxsep}{1pt}\colorbox{white}{\scriptsize #1}}}}
+
+
+
+\newcommand<>{\highlight}[1]{\alt#2{\blau{#1}}{#1}}
+
+\let\highlightbox\highlight
+
+
+
+% Computing the maximal width of an element to be inserted into a table later
+% helps to layout tables with overlays.
+\newlength{\smColumnWidth}
+\newcommand{\boxl}[2]{\settowidth{\smColumnWidth}{#1}\makebox[\smColumnWidth]{#2}}
+
+
+%% % for outline slides (no page number and pagenumber is decreased by one)
+%% \newenvironment{outline}{\frame{
+%%   \frametitle{\outlineheading}\addtocounter{page}{-1}%
+%%    \begin{itemize}\itemsep0ex}
+%% {\end{itemize}\}}
+
+
+%beamermisc just sets it to zero
+%\setlength\parskip{0\p@}% \@plus \p@}
+
+%seminar
+%\setlength\parskip{1ex minus .2ex} 
+
+% foiltex
+\setlength\parskip{5\p@ \@plus 2\p@ \@minus 2\p@}
+
+
+\usepackage{pifont}
+
+\newcommand{\siehe}{\ding{218}\xspace}
+\newcommand{\achtung}{\ding{43}\xspace}
+
+
+%\newcommand{\compare}[2]{\hyperlink{#1}{\siehe #2}}
+\newcommand{\compare}[2]{\alt<beamer>{\hyperlink{#1}{\beamergotobutton{#2}}}{(\siehe~#2)}}
+\newcommand{\compareb}[2]{\alt<beamer>{\hyperlink{#1}{\beamergotobutton{#2}}}{\siehe~#2}}
+
+
+\footnotesep0pt
+\renewcommand{\footnoterule}{}
+\usefootnotetemplate{
+  \noindent
+  \insertfootnotemark\insertfootnotetext}
+
+\let\beamerfn=\footnote
+\renewcommand{\footnote}[1]{%
+\let\oldfnsize=\footnotesize%
+\let\footnotesize=\tiny%
+\beamerfn<\thebeamerpauses->{#1}%
+\let\footnotesize=\oldfnsize}
+
+%\let\mybeamerfn=\footnote
+%\renewcommand{\footnote}[1]{\only<\thebeamerpauses->{\mybeamerfn{#1}}}
+%\renewcommand{\footnote}[1]{\visible<\thebeamerpauses->{\beamerfn[frame]{#1}}}
+%\renewcommand{\footnote}[1]{\beamerfn[frame]{#1}}
+
+
+% Conversion:
+%
+% Emacs Esc-X replace-regexp \\pdfbookmark\[1\]{\(.*\)}{.*} \\section{\1}
+
+\newcommand{\subsubsubsection}[1]{}
+
+
+
+\newcommand<>{\gotobuttonleft}[2]{%
+\mode<beamer>{\beamertemplatenavigationsymbolshorizontal%
+\usenavigationsymbolstemplate{\only#3{\vbox{%
+  \hyperlink{#1}{\beamergotobutton{#2}}}\hfill}}}}
+
+\newcommand<>{\gotobuttonright}[2]{%
+\mode<beamer>{\beamertemplatenavigationsymbolshorizontal%
+\usenavigationsymbolstemplate{\only#3{\vbox{%
+  \hfill\hyperlink{#1}{\beamergotobutton{#2}}}}}}}
+
+
+\newcommand<>{\beamertemplatebackfindforwardnavigationsymbolshorizontal}{%
+\mode<beamer>{\usenavigationsymbolstemplate{\vbox{%
+  \hbox{\insertbackfindforwardnavigationsymbol}}}}}
+
+
+
+\newcommand{\frametitlefit}[1]{\frametitle{\oneline{#1}}}
+
+
+\theoremstyle{example}
+
+\newtheorem{mydefinition}[theorem]{Definition}
+
+\newtheorem{schema}[theorem]{Schema}
+\newtheorem{prinzip}[theorem]{Prinzip}
+\newtheorem{prinzip-break}[theorem]{Prinzip}
+
+
+\treelinewidth0.6pt
+
+
+% this is a hack to make shrink work
+\newcommand{\handoutspace}{\mode<handout>{~\mbox{}}}
+
+
+\usepackage{breakurl}
+
+
+\newcommand\BackgroundPicture[3]{%
+    \setbeamertemplate{background}{%
+    \parbox[c][\paperheight]{\paperwidth}{%
+        \vfill \hfill
+ \includegraphics[width=#2\paperwidth,height=#3\paperheight]{#1}
+         \hfill \vfill
+      }}}
+
+\renewcommand{\centerline}[1]{\hfill#1\hfill\hfill\mbox{}}
+
+\iflanguage{german}{%
+\newcommand{\page}[1]{S.\,#1}}{%
+\newcommand{\page}[1]{p.\,#1}}
+
+\newcommand{\is}[1]{}
+\newcommand{\il}[1]{}
+\newcommand{\iaf}[1]{}
+\newcommand{\istype}[1]{}
+
+
+\hypersetup{bookmarksdepth=5}
+
+\def\ia#1{}
+\def\iw#1{}
+\def\il#1{}
+\def\iaright#1{}

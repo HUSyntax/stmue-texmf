@@ -1,0 +1,151 @@
+% myfullname.sty  Deutsch Stefan Mueller 94
+
+
+%%% fullname.sty
+%%%
+%%% Stuart M. Shieber
+%%% Mon Mar 30 17:23:36 EST 1992
+
+%%% Modifications to the citation macros intended to be used with the
+%%% fullname.bst style.
+
+%%% Some material taken from Peter Patel-Schneider's AAAI style for
+%%% use in conjunction with AAAI-named bibliography style.
+%%%
+%%% Citation forms:
+%%%
+%%% Macro	Output format
+%%% -----------	-----------------------------------------
+%%% \cite:	(Dewey, 1988)
+%%% 		(Dewey, 1988, page 15)
+%%% 		(Dewey, 1988; Cheatham, 1987; Howe, 1903)
+%%% \shortcite:	(1988)
+%%%		(1988, page 15)
+%%% \namecite:	Dewey (1988)
+%%%		Dewey (1988, page 15)
+%
+
+
+\let\@debugoutput=\@gobble
+%
+%*************************************************************************
+% DEBUGGING MACROS. To see what global variables are being assigned and
+% tested, uncomment these lines.
+%
+% \let\@debugoutput=\typeout
+% \def\@debugnamedef#1#2{\expandafter\def\csname #1\endcsname{#2}%
+%    \@debugoutput{\string\@debugnamedef: defined `#1' \space as `#2'}}
+% \def\@debugtestdef #1#2#3{%
+%   \@debugoutput{\string\@debugtestdef: testing whether `#1@#2' = `#3'}
+%   \def\@tempa{#3}\expandafter \ifx \csname #1@#2\endcsname%
+%   \@tempa  \else \@tempswatrue \fi}
+% \def\@debugbibtestdef #1#2#3#4{%
+%   \@debugoutput{\string\@debugbibtestdef: testing whether `#1@#2@#4' %
+%                = `#3'}
+%   \def\@tempa{#3}\expandafter \ifx \csname #1@#2@#4\endcsname%
+%   \@tempa  \else \@tempswatrue \fi}
+% \let\@testdef=\@debugtestdef
+% \let\@bibtestdef=\xbibtestdef
+% \let\@namedef=\@debugnamedef
+%
+%*************************************************************************
+%
+%-------------------------------------------------------------------------
+% Keep track of files currently opened.
+% 1. The counter @ipfilectr keeps track of the currently open I/P file,
+%    and @includefilectr keeps track of the \include files.
+% 2. @ipfilectr is set to @includefilectr, except when processing the root
+%    file. An arbitrary large (number greater than the maximum number of
+%    include files) is used to denote the root file.
+%-------------------------------------------------------------------------
+\newcounter{@ipfilectr}                 % current I/P file,
+\def\the@ipfilectr{\roman{@ipfilectr}}  % displayed as roman numerals
+\newcounter{@includefilectr}            % current \include file
+\def\@rootfilevalue{1988}               % arbitrary value for root file 
+\def\savedjobname{\jobname}             % save root file name as a macro
+
+%-----------------------------------------------------------------------
+% The name of the current I/P file is stored in macro \@currentipfile 
+% and the global macro ipfile@the@ipfilectr is set to this name whenever
+% \@currentipfile changes.
+%-----------------------------------------------------------------------
+\def\@currentipfile{\jobname}           % initialize to root file
+\setcounter{@ipfilectr}{\@rootfilevalue}        % ditto
+\global\@namedef{ipfile@\the@ipfilectr}{\@currentipfile}
+
+%-----------------------------------------------------------------------
+% Redefine the \include macro (taken from LATEX.TEX of 25-JAN-1988) so
+% that when a file is \include'd
+% 1. \@currentipfile is updated and \includefilectr incremented
+% 2. ipfilectr set to includefilectr
+% 3. global macro ipfile@\the@ipfilectr set to \@currentfile
+%
+% When the \include'd file is finished with
+% 1. reset \@currentipfile to the root file name (\jobname)
+% 2. reset ipfilectr to \@rootfilevalue
+% 3. global macro ipfile@\the@ipfilectr set to \@currentfile
+%-----------------------------------------------------------------------
+\def\include#1{\clearpage
+\def\@currentipfile{#1}                             
+\@debugoutput{\string\@currentipfile = `\@currentipfile'}    
+\addtocounter{@includefilectr}{1}                           
+\setcounter{@ipfilectr}{\value{@includefilectr}}            
+\global\@namedef{ipfile@\the@ipfilectr}{\@currentipfile}   
+%
+\if@filesw \immediate\write\@mainaux{\string\@input{#1.aux}}\fi
+\@tempswatrue\if@partsw \@tempswafalse\def\@tempb{#1}\@for
+\@tempa:=\@partlist\do{\ifx\@tempa\@tempb\@tempswatrue\fi}\fi
+\if@tempswa \if@filesw \let\@auxout=\@partaux
+\immediate\openout\@partaux #1.aux
+\immediate\write\@partaux{\relax}\fi\@input{#1.tex}\clearpage
+\@writeckpt{#1}\if@filesw\immediate\closeout\@partaux \fi
+\let\@auxout=\@mainaux\else\@nameuse{cp@#1}\fi
+%
+\def\@currentipfile{\jobname}                              
+\@debugoutput{\string\@currentipfile = `\@currentipfile'}    
+\setcounter{@ipfilectr}{\@rootfilevalue}                    
+\global\@namedef{ipfile@\the@ipfilectr}{\@currentipfile}}
+
+%---------------------------------------------------------------
+
+
+
+% don't box citations, add space between multiple citations, separate with ;
+\def\@citex[#1]#2{\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
+  \def\@citea{}\@cite{\@for\@citeb:=#2\do
+    {\@citea\def\@citea{; }\@ifundefined
+       {b@\@citeb}{{\bf ?}\@warning
+       {Citation `\@citeb' in file `\@nameuse{ipfile@\the@ipfilectr}' on page \thepage \space undefined}}%  filname St. Mue.
+{\csname b@\@citeb\endcsname}}}{#1}}
+% Allow short (name-less) citations, when used in
+% conjunction with a bibliography style that creates labels like
+%	\citename{<names>, }<year>
+\let\@internalcite\cite
+\def\cite{\def\citename##1{##1, }(\@internalcite}
+\def\shortcite{\def\citename##1{}(\@internalcite}
+\def\namecite{\def\citename##1{##1 (}\@internalcite}
+\def\@biblabel#1{\def\citename##1{##1}[#1]\hfill}
+
+%%% More changes made by SMS (originals in latex.tex)
+% Use parentheses instead of square brackets in the text.
+\def\@cite#1#2{{#1\if@tempswa , #2\fi})}
+
+% Deutsch
+
+% Don't put a label in the bibliography at all.  Just use the unlabeled format
+% instead.
+\def\thebibliography#1{\section*{Literatur\@mkboth
+ {Literatur}{Literatur}}\list
+ {}{\setlength{\labelwidth}{0pt}\setlength{\leftmargin}{\parindent}
+ \setlength{\itemindent}{-\parindent}}
+ \def\newblock{\hskip .11em plus .33em minus -.07em}
+ \sloppy\clubpenalty4000\widowpenalty4000
+ \sfcode`\.=1000\relax}
+\let\endthebibliography=\endlist
+
+\def\@lbibitem[#1]#2{\item[]\if@filesw 
+      { \def\protect##1{\string ##1\space}\immediate
+        \write\@auxout{\string\bibcite{#2}{#1}}\fi\ignorespaces}}
+
+\def\@bibitem#1{\item\if@filesw \immediate\write\@auxout
+       {\string\bibcite{#1}{\the\c@enumi}}\fi\ignorespaces}

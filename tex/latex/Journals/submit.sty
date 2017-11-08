@@ -1,0 +1,65 @@
+\usepackage{setspace}\onehalfspacing
+%\doublespacing
+
+\usepackage{etoolbox}
+%\AtBeginEnvironment{tabular}{\singlespacing}
+
+\makeatletter
+\AtBeginEnvironment{tabular}{%
+  \def\baselinestretch{1}\@currsize}%
+\makeatother
+
+
+\usepackage{endnotes}
+\let\footnote=\endnote
+
+\let\footnotemark=\endnotemark
+\let\footnotetext=\endnotetext
+
+
+% adapted from /usr/local/texlive/2012/texmf-dist/tex/latex/endnotes/endnotes.sty
+% it sets the footnote if even when in endnotes. St. Mü. 08.04.2013
+\long\def\@endnotetext#1{%
+     \@noftnotefalse\setcounter{fnx}{0}%
+     \if@enotesopen \else \@openenotes \fi
+     \immediate\write\@enotes{\@doanenote{\@theenmark}}%
+     \begingroup
+        \def\next{#1}%
+        \newlinechar='40
+        \immediate\write\@enotes{\meaning\next}%
+     \endgroup
+     \immediate\write\@enotes{\@endanenote}\@noftnotetrue}
+
+
+% put stuff in the form for the submission in the first argument
+% the stuff in your preferred layout goes to the second position.
+
+\newcommand{\submitOrNormal}[2]{#1}
+
+
+
+% turns \emph into \underline
+% linebreaks are possible
+
+% not in 2017
+%\usepackage{ulem}
+
+% instead of bold font, we use wavy underline
+\let\orgtextbf=\textbf
+%\let\textbf=\uwave
+
+\newcommand{\duline}[1]{\uline{\uline{#1}}}
+
+%\let\textsc=\duline
+
+
+% note: this package seems to be incompatible
+% with the package float, which provides the H option
+% for positioning floats
+\usepackage[nolists]{endfloat}
+
+% if varioref is used:
+\renewcommand{\vref}[1]{\ref{#1}}
+
+\let\pref=\ref
+\let\pmex=\mex
