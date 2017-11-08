@@ -1,6 +1,6 @@
 %% -*- coding:utf-8 -*-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%   $RCSfile: fu-beamer-includes.sty,v $
+%%   $RCSfile: hu-beamer-includes.sty,v $
 %%  $Revision: 1.1 $
 %%      $Date: 2008/06/04 08:57:58 $
 %%     Author: Stefan Mueller (Stefan.Mueller@cl.uni-bremen.de)
@@ -11,12 +11,20 @@
 
 %\input{fuberlinbeamerincludes}
 
+% use with xelatex
+
 \usepackage{etex}
 
-\usetheme{HUBerlin}
+% sollte mit Option xetex geladen werden, damit png geht, wird leider irgnedwo anders geladen.
+%\usepackage[dvips,xetex]{graphicx}
 
 \usepackage{url}
 \urlstyle{same}
+
+
+\usetheme{HUBerlin}
+\huberlinlogon{0.89cm}
+
 
 \usepackage{fontspec}
 
@@ -59,6 +67,26 @@ langsci-lgr,oneline}
 %\usepackage{forest-v105}
 \usepackage{langsci-forest-setup}
 
+% http://tex.stackexchange.com/questions/218417/replacing-tree-dvips-connect-nodes-in-a-tabular-environment/218458#218458
+% Instead of using the package tikzmark, you can define your own \tikzmark being a regular node. There's no need to use tcolorbox package.
+%\newcommand{\mynode}[2]%
+%    {\tikz[baseline=(#1.base), remember picture]\node[outer sep=0pt, inner sep=0pt] (#1) {#2};}
+
+%% % for subnodes in trees
+% to set the MRSes for scope underspecification
+%http://tex.stackexchange.com/questions/218417/replacing-tree-dvips-connect-nodes-in-a-tabular-environment/218458#218458
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+% for texlive 2015
+\newtcbox{\mybox}[1][]{empty,shrink tight,nobeforeafter,on line,before upper=\vphantom{gM},remember as=#1,top=2pt,bottom=2pt}
+
+% for texlive 2013
+%\newtcbox{\mybox}[1][]{enhanced,boxrule=0pt,colframe=white,colback=white,shrink tight,nobeforeafter,on line,before upper=\vphantom{gM},remember as=#1} %,top=3pt,bottom=3pt}
+                                %use shorten <=2pt,shorten >=2pt in the pictures.
+
+\newcommand{\mynode}[2]{\mybox[#1]{#2}}
+
+\usepackage{forest-beamer-setup}
 
 %\usepackage[german]{babel}
 %\usepackage{ngerman} % Dann kommt Literatur statt References raus.
@@ -198,8 +226,31 @@ langsci-lgr,oneline}
 %\usepackage{beamerthemeplain}
 
 
+% for hyperref to work with beamer we need to use biblatex.
+% http://tex.stackexchange.com/questions/275057/beamer-bibtex-natbib-hyperref-hyperlinks-do-not-work
+%\usepackage[natbib=true,backend=bibtex]{biblatex}
 
 
+%% \usepackage[
+%% 	natbib=true,
+%% 	\if1 %lsUndecapitalize
+%% 	style=biblatex-langsci-unified-undecap,
+%% 	\else
+%% 	style=biblatex-langsci-unified,
+%% 	\fi
+%% 	citestyle=langsci-authoryear-comp,
+%% 	%refsection=chapter,
+%% 	maxbibnames=99,
+%% 	isbn=false,
+%% 	doi=false,
+%% 	url=false,
+%% 	eprint=false,
+%% 	backend=bibtex,
+%% 	indexing=cite,
+%% 	%% \iflsCollection\else
+%% 	%% 	toc=bib 		% make bibliography appear in toc
+%% 	%% \fi
+%% 	]{biblatex} 
 
 %%%%%%%%% Bibliography
 %%% has to be loaded after the beamer classes since they redefine section
@@ -208,11 +259,25 @@ langsci-lgr,oneline}
 \setlength{\bibsep}{1mm}
 \bibpunct[: ]{(}{)}{;}{a}{}{,}
 
+
+% http://tex.stackexchange.com/questions/114082/citation-colour-with-beamer-hyperref-natbib
+% does not work
+%% \let\oldbibitem=\bibitem
+%% \renewcommand{\bibitem}[2][]{\label{#2}\oldbibitem[#1]{#2}}
+%% \let\oldcite=\cite
+%% \renewcommand\cite[1]{\hypersetup{linkcolor=green} \hyperlink{#1}{\oldcite{#1}}}
+%% \let\oldcitep=\citep
+%% \renewcommand\citep[1]{\hypersetup{linkcolor=green}\hyperlink{#1}{\oldcitep{#1}}}
+%% \let\oldciteauthor=\citeauthor
+%% \renewcommand\citeauthor[1]{\hypersetup{linkcolor=green}\hyperlink{#1}{\oldciteauthor{#1}}} 
+
+
 %\renewcommand\bibsection{\section{\refname}}
 
 % cite somebodys work
 \let\citew=\citealp
 %\newcommand{\newblock}{}
+
 
 
 %%%% end Bibliography
@@ -289,6 +354,17 @@ langsci-lgr,oneline}
 \huberlinnormalfootline 
 \huberlinpagedec
 }
+
+\newcommand{\beamerhandoutoutline}[1]{%
+%\beamertemplateemptyfootbar%
+\huberlinjustbarfootline
+\frame{\frametitle{\outlineheading}#1}%
+%\beamertemplatecopyrightfootframenumber%
+\huberlinnormalfootline 
+\huberlinpagedec
+}
+
+
 
 % The same but without a heading
 \newcommand{\beamerframe}[1]{%
@@ -388,13 +464,13 @@ langsci-lgr,oneline}
 \institute[HU Berlin, Institut für deutsche Sprache und Linguistik, Syntax]{
   Sprachwissenschaft des Deutschen / Syntax\\
   Institut für deutsche Sprache und Linguistik\\
-  Philosophische Fakultät II\\
+  Sprach- und literaturwissenschaftliche Fakultät\\
   HU Berlin\\[2mm]
 St.Mueller@hu-berlin.de}
 }{%
 \institute[HU Berlin, Institute for German Language and Linguistics]{
   Institute for German Language and Linguistics, Syntax Lab\\
-  Philosophische Fakultät II\\
+  Sprach- und literaturwissenschaftliche Fakultät\\
   HU Berlin\\[2mm]
 St.Mueller@hu-berlin.de}
 }
@@ -440,6 +516,7 @@ St.Mueller@hu-berlin.de}
 \newcommand<>{\blauit}[1]{\only#2{\textit{#1}}}
 \newcommand<>{\rotsl}[1]{\only#2{\textsl{#1}}}
 \newcommand<>{\rotit}[1]{\only#2{\textit{#1}}}
+\newcommand<>{\rotul}[1]{\only#2{\underline{#1}}}
 \newcommand<>{\gruensc}[1]{\only#2{\textsc{#1}}}
 \newcommand<>{\gruenit}[1]{\only#2{\textit{#1}}}
 \newcommand<>{\orange}[1]{#1}
@@ -470,6 +547,7 @@ St.Mueller@hu-berlin.de}
 \newcommand<>{\blauit}[1]{\blau#2{#1}}
 \newcommand<>{\rotsl}[1]{\rot#2{#1}}
 \newcommand<>{\rotit}[1]{\rot#2{#1}}
+\newcommand<>{\rotul}[1]{\rot#2{#1}}
 \newcommand<>{\gruensc}[1]{\gruen#2{#1}}
 \newcommand<>{\gruenit}[1]{\gruen#2{#1}}
 \newcommand<>{\orange}[1]{{\color#2[rgb]{0.7,0.3,0}#1}}
