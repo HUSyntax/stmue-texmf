@@ -39,17 +39,6 @@
 % CCG uses \hfillrule to cover the whole area of a table cell. St. Mü. 20.1.2008
 \usepackage{colortbl}
 
-%\usepackage[german]{babel}
-%\usepackage{ngerman} % Dann kommt Literatur statt References raus.
-\usepackage{german}
-
-%\usepackage{graphics}
-
-
-
-\iflanguage{german}{
-\usepackage{de-date}}{
-\usepackage{eng-date}}
 
 
 
@@ -60,12 +49,14 @@
 
 % mycommands redefines \dh, it has to be loaded after babel
 
+
 \usepackage{article-ex,
-langsci-lgr,makros.2e,oneline,
+langsci-lgr,oneline,
 %de-commands,
 mycommands,%\spacebr
 comment,
-tree-dvips,my-gb4e-slides}
+tree-dvips,
+my-gb4e-slides}
 
 
 %% \usepackage{tikz-qtree}
@@ -73,7 +64,54 @@ tree-dvips,my-gb4e-slides}
 %% %\tikzset{every tree node/.style={align=left, anchor=north}}
 %% \tikzset{every roof node/.append style={inner sep=0.1pt,text height=2ex,text depth=0.3ex}}
 
-\usepackage{langsci-forest-v105-setup}
+
+%\usepackage{langsci-forest-v105-setup}
+\usepackage{langsci-forest-setup}
+%% % fix, remove once forest is updated
+%% % should work with texlive 2017
+%\makeatletter
+\apptocmd\forest@pgfmathhelper@attribute@dimen{\global\pgfmathunitsdeclaredtrue}{\typeout{patching succeeded}}{patching failed}
+\apptocmd\forest@pgfmathhelper@register@dimen{\global\pgfmathunitsdeclaredtrue}{\typeout{patching succeeded}}{patching failed}
+%\makeatother 
+
+% http://tex.stackexchange.com/questions/218417/replacing-tree-dvips-connect-nodes-in-a-tabular-environment/218458#218458
+% Instead of using the package tikzmark, you can define your own \tikzmark being a regular node. There's no need to use tcolorbox package.
+%\newcommand{\mynode}[2]%
+%    {\tikz[baseline=(#1.base), remember picture]\node[outer sep=0pt, inner sep=0pt] (#1) {#2};}
+
+%% % for subnodes in trees
+% to set the MRSes for scope underspecification
+%http://tex.stackexchange.com/questions/218417/replacing-tree-dvips-connect-nodes-in-a-tabular-environment/218458#218458
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+% for texlive 2015
+\newtcbox{\mybox}[1][]{empty,shrink tight,nobeforeafter,on line,before upper=\vphantom{gM},remember as=#1,top=2pt,bottom=2pt}
+
+% for texlive 2013
+%\newtcbox{\mybox}[1][]{enhanced,boxrule=0pt,colframe=white,colback=white,shrink tight,nobeforeafter,on line,before upper=\vphantom{gM},remember as=#1} %,top=3pt,bottom=3pt}
+                                %use shorten <=2pt,shorten >=2pt in the pictures.
+
+\newcommand{\mynode}[2]{\mybox[#1]{#2}}
+
+
+\usepackage{forest-beamer-setup}
+
+%\usepackage[german]{babel}
+%\usepackage{ngerman} % Dann kommt Literatur statt References raus.
+\usepackage{german}
+
+% makros loads abbrev hence it must be loaded after german, but german has to be loaded after forest
+\usepackage{makros.2e}
+
+
+%\usepackage{graphics}
+
+
+
+\iflanguage{german}{
+\usepackage{de-date}}{
+\usepackage{eng-date}}
+
 
 %\usepackage[latin1]{inputenc}
 %\usepackage[utf8]{inputenc}
