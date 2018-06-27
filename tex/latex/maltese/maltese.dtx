@@ -1,0 +1,212 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2005 by Paulseph-John Farrugia <paulseph@hotmail.com>
+% -------------------------------------------------------
+% 
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.2
+% of this license or (at your option) any later version.
+% The latest version of this license is in:
+%
+%    http://www.latex-project.org/lppl.txt
+%
+% and version 1.2 or later is part of all distributions of LaTeX 
+% version 1999/12/01 or later.
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{maltese.dtx}
+%</driver>
+%<package>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<package>\ProvidesPackage{maltese}[2003/11/24 v1.3 Maltese input support]
+%
+%<package>\RequirePackage{ucs}
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{maltese}
+\usepackage{url}
+\EnableCrossrefs         
+\CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{maltese.dtx}
+  \PrintChanges
+  \PrintIndex
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{92}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+%
+% \changes{v1.0}{2003/03/03}{Initial version}
+% \changes{v1.1}{2003/09/19}{Resolved bug when using unicode characters 126 and 127 in a tabbing environment}
+% \changes{v1.2}{2003/11/24}{Barred h definition changed}
+%
+% \GetFileInfo{skeleton.dtx}
+%
+% \DoNotIndex{\newcommand,\newenvironment}
+%
+%
+% \newcommand{\sample}{{\mH}{\mi}nja {\mc}-{\mc}awla {\mz}-{\mz}{\my}ira li q{\mi}{\my}da ti{\mg}ri fil-{\mh}amrija.}
+% 
+%
+% \title{The \textsf{Maltese} package}
+% \author{Paulseph-John Farrugia \\ \url{paulseph@hotmail.com}}
+%
+% \maketitle
+%
+% \section{Introduction}
+%
+% This package is intended to facilitate the input of Maltese
+% characters with special diacritics (\mc, \mC, \mg, \mG, \mh, \mH,
+% \my, \mY, \mi, \mI, \mz, \mZ) in {\LaTeXe}.
+%
+% \section{Requirements}
+%
+% This package requires the following \emph{ucs} package to be already available.
+% 
+% \section{Installation}
+% 
+% To install, simply copy the available \emph{maltese.sty} package
+% file to an appropriate path for the {\LaTeXe} distribution being
+% used and refresh the system as necessary. (Refer to the local
+% guide for further details.)
+%
+% \section{Usage}
+% 
+% The package provides the commands given in Table
+% \ref{tbl:commands}. The commands for \emph{\my} and \emph{\mi} are
+% not simply shorthand, but are intended to prevent hyphenation to
+% occur within these characters.
+%
+% \begin{table}
+% \begin{center}
+% \begin{tabular}{ccc}
+% \hline \textbf{Long Form} & \textbf{Short Form} & \textbf{Result} \\ \hline
+% \verb!\maltesec! & \verb!\mc! & \mc \\ \hline
+% \verb!\malteseC! & \verb!\mC! & \mC \\ \hline
+% \verb!\malteseg! & \verb!\mg! & \mg \\ \hline
+% \verb!\malteseG! & \verb!\mG! & \mG \\ \hline
+% \verb!\malteseh! & \verb!\mh! & \mh \\ \hline
+% \verb!\malteseH! & \verb!\mH! & \mH \\ \hline
+% \verb!\maltesey! & \verb!\my! & \my \\ \hline
+% \verb!\malteseY! & \verb!\mY! & \mY \\ \hline
+% \verb!\maltesei! & \verb!\mi! & \mi \\ \hline
+% \verb!\malteseI! & \verb!\mI! & \mI \\ \hline
+% \verb!\maltesez! & \verb!\mz! & \mz \\ \hline
+% \verb!\malteseZ! & \verb!\mZ! & \mZ \\ \hline
+% \end{tabular}
+% \end{center}
+% \caption{\textbf{maltese} package commands\label{tbl:commands}}
+% \end{table}
+% 
+% The following are samples in various styles of the default font:
+% 
+% \begin{quote}
+% 
+% \sample
+% 
+% \textbf{\sample}
+% 
+% \textit{\sample}
+% 
+% \textbf{\textit{\sample}}
+% 
+% \textsl{\sample}
+% 
+% \end{quote}
+% 
+% \section{Notes}
+% 
+% The package provides good results with the default {\LaTeXe}
+% font. However, some characters may not look right with typewriter
+% text or if a different font, such as \emph{times}, is loaded.
+% 
+% \section{Acknowledgements}
+% 
+% Thanks go to Dominique Unruh (\url{dominique@unruh.de}), author of
+% the \emph{ucs} package, for kindly providing the current
+% definitions for \emph{\mh} and \emph{\mH}. Thanks to Sinclair Calleja for testing
+% and helping with debugging.
+%
+% \StopEventually{}
+%
+% \section{Implementation}
+%
+% Redefine h@bar to safeguard from tabbing environment.
+%
+%    \begin{macrocode}
+\let\h@bar=\=
+%    \end{macrocode}
+%
+% Define barred h lower and upper case.
+%
+%    \begin{macrocode}
+\DeclareUnicodeCharacter{"126}{\leavevmode\rlap{\h@bar{\empty}}H\llap{\h@bar{\empty}}}
+\DeclareUnicodeCharacter{"127}{\leavevmode\rlap{\h@bar{\empty}}h}
+%    \end{macrocode}
+%
+% Declare shortcuts.
+%
+%    \begin{macrocode}
+\newcommand{\mc}{\unichar{"10B}}
+\newcommand{\mC}{\unichar{"10A}}
+\newcommand{\mg}{\unichar{"121}}
+\newcommand{\mG}{\unichar{"120}}
+\newcommand{\mh}{\unichar{"127}}
+\newcommand{\mH}{\unichar{"126}}
+\newcommand{\mz}{\unichar{"17C}}
+\newcommand{\mZ}{\unichar{"17B}}
+\newcommand{\my}{{g\mh}}
+\newcommand{\mY}{{G\mh}}
+\newcommand{\mi}{{ie}}
+\newcommand{\mI}{{Ie}}
+%    \end{macrocode}
+%
+% Declare longer named versions.
+%
+%    \begin{macrocode}
+\newcommand{\maltesec}{\mc}
+\newcommand{\malteseC}{\mC}
+\newcommand{\malteseg}{\mg}
+\newcommand{\malteseG}{\mG}
+\newcommand{\malteseh}{\mh}
+\newcommand{\malteseH}{\mH}
+\newcommand{\maltesez}{\mz}
+\newcommand{\malteseZ}{\mZ}
+\newcommand{\maltesey}{\my}
+\newcommand{\malteseY}{\mY}
+\newcommand{\maltesei}{\mi}
+\newcommand{\malteseI}{\mI}
+%    \end{macrocode}
+%
+% \begin{macro}{\maltesetext}
+% A utility macro to wrap Maltese text with a font that will correctly
+% display the non-Latin characters.
+%    \begin{macrocode}
+\newcommand{\maltesetext}[1]{\bgroup\fontfamily{cmr}\selectfont#1\egroup}
+%    \end{macrocode}
+% \end{macro}
+%
+% \Finale
+\endinput

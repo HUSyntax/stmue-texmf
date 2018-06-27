@@ -1,4 +1,4 @@
-\usepackage{my-xspace}
+%\RequirePackage{my-xspace}
 %\usepackage{german}
 
 % \, -> kurz \ -> '.' kein Satzende
@@ -112,6 +112,7 @@
 \newcommand{\accf}{\textsc{acc}\xspace}
 \newcommand{\accv}{\textsc{acc} value\xspace}
 \newcommand{\argst}{\textsc{arg-st}\xspace}
+\newcommand{\argstf}{\textsc{arg-st} feature\xspace}
 \newcommand{\argstw}{\textsc{arg-st}"=Wert\xspace}
 \newcommand{\argstv}{\textsc{arg-st} value\xspace}
 \newcommand{\argstvs}{\textsc{arg-st} values\xspace}
@@ -164,8 +165,10 @@
 \newcommand{\dav}{\textsc{da} value\xspace}
 \newcommand{\davs}{\textsc{da} values\xspace}
 \newcommand{\defv}{\textsc{def} value\xspace}
+\newcommand{\deps}{\textsc{deps}\xspace}
 \newcommand{\depsl}{\textsc{deps} list\xspace}
 \newcommand{\domvs}{\textsc{dom} values\xspace}
+\newcommand{\domain}{\textsc{domain}\xspace}
 \newcommand{\dsl}{\textsc{dsl}\xspace}
 \newcommand{\dslf}{\textsc{dsl} feature\xspace}
 \newcommand{\dslfs}{\textsc{dsl} features\xspace}
@@ -178,6 +181,7 @@
 \iflanguage{german}{%
 \newcommand{\dtrsl}{\textsc{dtrs}"=Liste\xspace}}{%
 \newcommand{\dtrsl}{\textsc{dtrs} list\xspace}}
+\newcommand{\dtrsv}{\textsc{dtrs} value\xspace}
 
 % used by kluwer.cls
 %\newcommand{\dom}{\textsc{dom}\xspace}
@@ -187,6 +191,7 @@
 \newcommand{\doml}{\textsc{dom}"=Liste\xspace}}{%
 \newcommand{\doml}{\textsc{dom} list\xspace}%
 }
+\newcommand{\HPSGerg}{\textsc{erg}\xspace}
 \newcommand{\ergm}{\textsc{erg}"=Merkmal\xspace}
 \newcommand{\ergv}{\textsc{erg} value\xspace}
 \newcommand{\ergw}{\textsc{erg}"=Wert\xspace}
@@ -210,6 +215,7 @@
 \newcommand{\hconsvs}{\textsc{hcons} values\xspace}
 \newcommand{\head}{\textsc{head}\xspace}
 \newcommand{\headf}{\textsc{head} feature\xspace}
+\newcommand{\headfs}{\textsc{head} features\xspace}
 \newcommand{\headv}{\textsc{head} value\xspace}
 \newcommand{\headvs}{\textsc{head} values\xspace}
 \newcommand{\headw}{\textsc{head}"=Wert\xspace}
@@ -236,6 +242,7 @@
 \newcommand{\lexwe}{\textsc{lex}"=Werte\xspace}
 \newcommand{\lexwen}{\textsc{lex}"=Werten\xspace}
 \newcommand{\lexwes}{\textsc{lex}"=Wertes\xspace}
+\newcommand{\HPSGloc}{\textsc{loc}\xspace}
 \newcommand{\local}{\textsc{local}\xspace}
 \newcommand{\localf}{\textsc{local} feature\xspace}
 \newcommand{\localv}{\textsc{local} value\xspace}
@@ -617,6 +624,38 @@ Derivation}{derivation}\xspace}
 
 \newcommand{\Prolog}{\textsc{Prolog}\xspace}
 \newcommand{\Prologs}{\textsc{Prolog}s\xspace}
+
+
+%% % taken from https://tex.stackexchange.com/a/95079/18561
+%% \newbox\usefulbox
+
+%% \makeatletter
+%% \def\getslant #1{\strip@pt\fontdimen1 #1}
+
+%% \def\skoverline #1{\mathchoice
+%%  {{\setbox\usefulbox=\hbox{$\m@th\displaystyle #1$}%
+%%     \dimen@ \getslant\the\textfont\symletters \ht\usefulbox
+%%     \divide\dimen@ \tw@ 
+%%     \kern\dimen@ 
+%%     \overline{\kern-\dimen@ \box\usefulbox\kern\dimen@ }\kern-\dimen@ }}
+%%  {{\setbox\usefulbox=\hbox{$\m@th\textstyle #1$}%
+%%     \dimen@ \getslant\the\textfont\symletters \ht\usefulbox
+%%     \divide\dimen@ \tw@ 
+%%     \kern\dimen@ 
+%%     \overline{\kern-\dimen@ \box\usefulbox\kern\dimen@ }\kern-\dimen@ }}
+%%  {{\setbox\usefulbox=\hbox{$\m@th\scriptstyle #1$}%
+%%     \dimen@ \getslant\the\scriptfont\symletters \ht\usefulbox
+%%     \divide\dimen@ \tw@ 
+%%     \kern\dimen@ 
+%%     \overline{\kern-\dimen@ \box\usefulbox\kern\dimen@ }\kern-\dimen@ }}
+%%  {{\setbox\usefulbox=\hbox{$\m@th\scriptscriptstyle #1$}%
+%%     \dimen@ \getslant\the\scriptscriptfont\symletters \ht\usefulbox
+%%     \divide\dimen@ \tw@ 
+%%     \kern\dimen@ 
+%%     \overline{\kern-\dimen@ \box\usefulbox\kern\dimen@ }\kern-\dimen@ }}%
+%%  {}}
+%% \makeatother
+
 
 
 \newcommand{\littlev}{little \emph{v}\xspace}

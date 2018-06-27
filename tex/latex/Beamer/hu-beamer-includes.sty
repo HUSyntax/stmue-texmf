@@ -74,6 +74,20 @@ my-gb4e-slides}
 \apptocmd\forest@pgfmathhelper@register@dimen{\global\pgfmathunitsdeclaredtrue}{\typeout{patching succeeded}}{patching failed}
 %\makeatother 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% (Syntactic) Trees
+% package needed: forest
+%
+%% Setting for simple trees
+\forestset{
+      terminus/.style={tier=word, for children={tier=tabular}, for tree={fit=band}, for descendants={no path, align=left, l sep=0pt}},
+      sn edges original/.style={for tree={parent anchor=south, child anchor=north,align=center,base=top}},
+      no path/.style={edge path={}},
+      set me left/.style={calign with current edge, child anchor=north west, for parent={parent anchor=south west}},
+}
+
+
 % http://tex.stackexchange.com/questions/218417/replacing-tree-dvips-connect-nodes-in-a-tabular-environment/218458#218458
 % Instead of using the package tikzmark, you can define your own \tikzmark being a regular node. There's no need to use tcolorbox package.
 %\newcommand{\mynode}[2]%
@@ -101,7 +115,7 @@ my-gb4e-slides}
 \usepackage{german}
 
 % makros loads abbrev hence it must be loaded after german, but german has to be loaded after forest
-\usepackage{makros.2e}
+\usepackage{abbrev,merkmalstruktur,makros.2e}
 
 
 %\usepackage{graphics}
@@ -118,9 +132,9 @@ my-gb4e-slides}
 
 
 
-\mode<handout>{
-\let\url\HyOrg@url
-}
+%\mode<handout>{
+%\let\url\HyOrg@url
+%}
 
 
 % (34) Er schläft. -> Abstand zwischen `)' und `E'
