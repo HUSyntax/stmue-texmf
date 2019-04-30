@@ -238,62 +238,7 @@ langsci-lgr,oneline}
 %\usepackage{beamerthemeshadow}
 %\usepackage{beamerthemeplain}
 
-
-% for hyperref to work with beamer we need to use biblatex.
-% http://tex.stackexchange.com/questions/275057/beamer-bibtex-natbib-hyperref-hyperlinks-do-not-work
-%\usepackage[natbib=true,backend=bibtex]{biblatex}
-
-
-%% \usepackage[
-%% 	natbib=true,
-%% 	\if1 %lsUndecapitalize
-%% 	style=biblatex-langsci-unified-undecap,
-%% 	\else
-%% 	style=biblatex-langsci-unified,
-%% 	\fi
-%% 	citestyle=langsci-authoryear-comp,
-%% 	%refsection=chapter,
-%% 	maxbibnames=99,
-%% 	isbn=false,
-%% 	doi=false,
-%% 	url=false,
-%% 	eprint=false,
-%% 	backend=bibtex,
-%% 	indexing=cite,
-%% 	%% \iflsCollection\else
-%% 	%% 	toc=bib 		% make bibliography appear in toc
-%% 	%% \fi
-%% 	]{biblatex} 
-
-%%%%%%%%% Bibliography
-%%% has to be loaded after the beamer classes since they redefine section
-
-\usepackage[sectionbib]{natbib}
-\setlength{\bibsep}{1mm}
-\bibpunct[: ]{(}{)}{;}{a}{}{,}
-
-
-% http://tex.stackexchange.com/questions/114082/citation-colour-with-beamer-hyperref-natbib
-% does not work
-%% \let\oldbibitem=\bibitem
-%% \renewcommand{\bibitem}[2][]{\label{#2}\oldbibitem[#1]{#2}}
-%% \let\oldcite=\cite
-%% \renewcommand\cite[1]{\hypersetup{linkcolor=green} \hyperlink{#1}{\oldcite{#1}}}
-%% \let\oldcitep=\citep
-%% \renewcommand\citep[1]{\hypersetup{linkcolor=green}\hyperlink{#1}{\oldcitep{#1}}}
-%% \let\oldciteauthor=\citeauthor
-%% \renewcommand\citeauthor[1]{\hypersetup{linkcolor=green}\hyperlink{#1}{\oldciteauthor{#1}}} 
-
-
-%\renewcommand\bibsection{\section{\refname}}
-
-% cite somebodys work
-\let\citew=\citealp
-%\newcommand{\newblock}{}
-
-
-
-%%%% end Bibliography
+\usepackage{unified-biblatex}
 
 %\usepackage{pstricks}
 %\usepackage[usenames]{pstcol}

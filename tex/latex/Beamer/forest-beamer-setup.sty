@@ -36,5 +36,10 @@
       edge={/tikz/visible on={#1}}}}}
 
 
+% https://tex.stackexchange.com/questions/477532/avoiding-jumping-nodes-in-a-tree-with-forest-and-beamer/477688#477688
+\tikzset{min width/.style n args={2}{/utils/exec={\pgfmathparse{max(width("#1"),width("#2"))}
+ \edef\mywidth{\pgfmathresult}},
+ text width={\mywidth pt}}}
+
 
 

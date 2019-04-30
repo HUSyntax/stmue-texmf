@@ -1,0 +1,40 @@
+\newcommand{\bstpath}{/Users/stefan/Library/texmf/tex/latex/langsci/bst/}
+
+\newcommand{\bbxpath}{\bstpath biblatex-sp-unified/bbx/}
+  % \renewcommand{\bbxpath}{\bstpath}
+\newcommand{\cbxpath}{\bstpath biblatex-sp-unified/cbx/}
+\usepackage[
+	natbib=true,
+	% \iflsUndecapitalize
+	% style=\bstpath biblatex-langsci-unified-undecap,
+	% \else
+	% style=\bstpath biblatex-langsci-unified,
+	% \fi
+%	style=\bbxpath biblatex-sp-unified,
+%	citestyle=\cbxpath sp-authoryear-comp,
+	style=\bbxpath biblatex-sp-unified,
+        citestyle=\cbxpath sp-authoryear-comp,
+	useprefix = true, %sort von, van, de where they should appear
+	%refsection=chapter,
+	maxbibnames=99,
+	maxcitenames=2,
+        uniquename=false,
+	isbn=false,
+	doi=false,
+	url=false,
+	eprint=false,
+        useprefix=true,
+	backend=biber,
+	indexing=cite,
+        autolang=hyphen,
+%        sorting=ydnt,
+%  datamodel=\bstpath langsci   % add authauthor and autheditor as possible fields to bibtex entries
+]{biblatex}
+
+\bibliography{bib-abbr,biblio}
+
+\usepackage{fixcitep}
+
+
+% cite somebodys work
+\let\citew=\citealp
