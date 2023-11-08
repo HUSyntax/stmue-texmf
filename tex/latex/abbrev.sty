@@ -6,6 +6,10 @@
 \newcommand{\ua}{u.\,a.\ }
 \newcommand{\eg}{e.g.,\xspace}
 \newcommand{\Eg}{E.g.,\xspace}
+\newcommand{\ie}{i.e.,\xspace}
+\newcommand{\eguk}{e.g.\xspace}
+\newcommand{\Eguk}{E.g.\xspace}
+\newcommand{\ieuk}{i.e.\xspace}
 \newcommand{\uae}{u.\,"a.\ }
 \newcommand{\zb}{z.\,B.\ }
 \newcommand{\Zb}{Z.\,B.\ }
@@ -33,8 +37,8 @@
 \newcommand{\neu}{\textsc{n}\xspace}
 \newcommand{\thirdsg}{3\textsc{sg}\xspace}
 
-
-\newcommand{\INF}{\textsc{inf}{}\xspace}	%infinitive
+% defined in langsci-lgr in texlive 2021
+%\newcommand{\INF}{\textsc{inf}{}\xspace}	%infinitive
 
 
 \newcommand{\defsc}{\textsc{def}}
@@ -45,7 +49,10 @@
 \newcommand{\expl}{\textsc{expl}}
 \newcommand{\itextra}{$_{extra}$}
 \newcommand{\conj}{$_{conj}$}
+\newcommand{\prt}{\textsc{part}\xspace}
+\newcommand{\PRT}{\textsc{part}\xspace}
 \newcommand{\partic}{\textsc{part}\xspace}
+\newcommand{\PARTIC}{\textsc{part}\xspace}
 \newcommand{\prfx}{\textsc{prfx}\xspace}
 
 \newcommand{\RA}{\textsc{râ}\xspace}
@@ -100,7 +107,8 @@
 
 
 
-
+\newcommand{\iwithini}{\emph{i}-within"=\emph{i}\xspace}
+\newcommand{\iwithinic}{\emph{i}-within"=\emph{i}"=Condition\xspace}
 
 
 
@@ -115,6 +123,7 @@
 
 \newcommand{\accf}{\textsc{acc}\xspace}
 \newcommand{\accv}{\textsc{acc} value\xspace}
+%\newcommand{\agr}{\textsc{agr}\xspace}
 \newcommand{\argst}{\textsc{arg-st}\xspace}
 \newcommand{\argstf}{\textsc{arg-st} feature\xspace}
 \newcommand{\argstw}{\textsc{arg-st}"=Wert\xspace}
@@ -124,6 +133,11 @@
 \newcommand{\argstl}{\textsc{arg-st}"=Liste\xspace}
 }{\newcommand{\argstl}{\textsc{arg-st} list\xspace}}
 \newcommand{\argstls}{\textsc{arg-st} lists\xspace}
+
+
+%\newcommand{\aux}{\textsc{aux}\xspace}
+\newcommand{\auxf}{\textsc{aux} feature\xspace}
+\newcommand{\auxv}{\textsc{aux} value\xspace}
 
 \newcommand{\casev}{\textsc{case} value\xspace}
 \newcommand{\casew}{\textsc{case}"=Wert\xspace}
@@ -157,6 +171,7 @@
 \newcommand{\contwe}{\textsc{cont}"=Werte\xspace}
 \newcommand{\contwes}{\textsc{cont}"=Wertes\xspace}
 \newcommand{\contws}{\textsc{cont}"=Wertes\xspace}
+\newcommand{\coord}{\textsc{coord}\xspace}
 \newcommand{\cstr}{c"=Struktur\xspace}
 \newcommand{\da}{\textsc{da}\xspace}
 \newcommand{\daf}{\textsc{da} feature\xspace}
@@ -231,6 +246,8 @@
 \newcommand{\indexv}{\textsc{index} value\xspace}
 \newcommand{\islw}{\textsc{inher$|$"-slash}"=Wert\xspace}
 \newcommand{\isll}{\textsc{inher$|$"-slash}"=Liste\xspace}
+\newcommand{\inv}{\textsc{inv}\xspace}
+\newcommand{\ini}{\textsc{ini}\xspace}
 \newcommand{\initial}{\textsc{initial}\xspace}
 \newcommand{\initialv}{\textsc{initial} value\xspace}
 \newcommand{\initialf}{\textsc{initial} feature\xspace}
@@ -246,9 +263,30 @@
 \newcommand{\lexm}{\textsc{lex}"=Merkmal\xspace}
 \newcommand{\lexv}{\textsc{lex} value\xspace}
 \newcommand{\lexw}{\textsc{lex}"=Wert\xspace}
-\newcommand{\lexwe}{\textsc{lex}"=Werte\xspace}
-\newcommand{\lexwen}{\textsc{lex}"=Werten\xspace}
-\newcommand{\lexwes}{\textsc{lex}"=Wertes\xspace}
+\newcommand{\light}{\textsc{light}\xspace}
+\newcommand{\lightf}{\textsc{light} feature\xspace}
+\newcommand{\lightm}{\textsc{light}"=Merkmal\xspace}
+\newcommand{\lightv}{\textsc{light} value\xspace}
+\newcommand{\lightw}{\textsc{light}"=Wert\xspace}
+\newcommand{\lightwe}{\textsc{light}"=Werte\xspace}
+\newcommand{\lightwen}{\textsc{light}"=Werten\xspace}
+\newcommand{\lightwes}{\textsc{light}"=Wertes\xspace}
+\newcommand{\lista}{\textsc{list-a}\xspace}
+\iflanguage{german}{%
+\newcommand{\listal}{\textsc{list-a}"=Liste\xspace}}{%
+\newcommand{\listal}{\textsc{list-a} list\xspace}%
+}
+\newcommand{\listz}{\textsc{list-z}\xspace}
+\newcommand{\listu}{\textsc{list-u}\xspace}
+\iflanguage{german}{%
+\newcommand{\listul}{\textsc{list-u}"=Liste\xspace}}{%
+\newcommand{\listul}{\textsc{list-u} list\xspace}%
+}
+\newcommand{\listlu}{\textsc{list-lu}\xspace}
+\iflanguage{german}{%
+\newcommand{\listlul}{\textsc{list-lu}"=Liste\xspace}}{%
+\newcommand{\listlul}{\textsc{list-lu} list\xspace}%
+}
 \newcommand{\HPSGloc}{\textsc{loc}\xspace}
 \newcommand{\local}{\textsc{local}\xspace}
 \newcommand{\localf}{\textsc{local} feature\xspace}
@@ -280,6 +318,7 @@
 \newcommand{\nonlocv}{\textsc{nonloc} value\xspace}
 \newcommand{\nonlocf}{\textsc{nonloc} feature\xspace}
 \newcommand{\nonlocw}{\textsc{nonloc}"=Wert\xspace}
+\newcommand{\num}{\textsc{num}\xspace}
 \newcommand{\numw}{\textsc{num}"=Wert\xspace}
 \newcommand{\objw}{\textsc{obj}"=Wert\xspace}
 \newcommand{\objz}{\textsc{obj2}\xspace}
@@ -300,6 +339,7 @@
 \newcommand{\phonf}{\textsc{phon} feature\xspace}
 \newcommand{\prd}{\textsc{prd}\xspace}
 \newcommand{\prdf}{\textsc{prd} feature\xspace}
+\newcommand{\pred}{\textsc{pred}\xspace}
 \newcommand{\predm}{\textsc{pred}"=Merkmal\xspace}
 \newcommand{\predw}{\textsc{pred}"=Wert\xspace}
 \newcommand{\predv}{\textsc{pred} value\xspace}
@@ -313,6 +353,7 @@
 \newcommand{\qstore}{\textsc{qstore}\xspace}
 % avm.sty
 %\newcommand{\rel}{\textsc{rel}\xspace}
+%\newcommand{\REL}{\textsc{rel}\xspace}
 \newcommand{\rels}{\textsc{rels}\xspace}
 \iflanguage{german}{%
 \newcommand{\relsl}{\textsc{rels}"=Liste\xspace}}{%
@@ -328,12 +369,11 @@
 \newcommand{\relwe}{\textsc{rel}"=Werte\xspace}
 \newcommand{\sbcg}{Sign"=Based Construction Grammar\indexsbcg}
 \newcommand{\self}{\textsc{self}\xspace}
+\newcommand{\SLASH}{\textsc{slash}\xspace}
 \newcommand{\slasch}{\textsc{slash}\xspace}
 \newcommand{\slashel}{\textsc{slash}"=Element\xspace}
 \newcommand{\slashf}{\textsc{slash} feature\xspace}
-\iflanguage{german}{%
-\newcommand{\slashl}{\textsc{slash}"=Liste\xspace}}{%
-\newcommand{\slashl}{\textsc{slash} list\xspace}}
+\newcommand{\slashl}{\iflanguage{german}{\textsc{slash}"=Liste\xspace}{\textsc{slash} list\xspace}}
 \newcommand{\slashls}{\textsc{slash} lists\xspace}
 \newcommand{\slashm}{\textsc{slash}"=Merkmal\xspace}
 \newcommand{\slashms}{\textsc{slash}"=Merkmals\xspace}
@@ -352,8 +392,10 @@
 \newcommand{\sprl}{\textsc{spr}"=Liste\xspace}}{%
 \newcommand{\sprl}{\textsc{spr} list\xspace}%
 }
+\newcommand{\sprls}{\textsc{spr} lists\xspace}%
 \newcommand{\sprm}{\textsc{spr}"=Merkmal\xspace}
 \newcommand{\sprv}{\textsc{spr} value\xspace}
+\newcommand{\sprvs}{\textsc{spr} values\xspace}
 \newcommand{\sprw}{\textsc{spr}"=Wert\xspace}
 \newcommand{\sprwe}{\textsc{spr}"=Werte\xspace}
 \newcommand{\sprwes}{\textsc{spr}"=Wertes\xspace}
@@ -408,6 +450,7 @@
 \newcommand{\vcompv}{\textsc{vcomp} value\xspace}
 \newcommand{\vcompw}{\textsc{vcomp}"=Wert\xspace}
 \newcommand{\xarg}{\textsc{xarg}\xspace}
+\newcommand{\xargf}{\textsc{xarg} feature\xspace}
 \newcommand{\xargs}{\textsc{xarg}s\xspace}
 \newcommand{\xcomp}{\textsc{xcomp}\xspace}
 \newcommand{\xcompl}{\textsc{xcomp}"=Liste\xspace}
@@ -418,11 +461,11 @@
 \newcommand{\vformv}{\textsc{vform} value\xspace}
 \newcommand{\vformw}{\textsc{vform}"=Wert\xspace}
 
-\newcommand{\prefix}[1]{\emph{#1}"~\xspace}
-\newcommand{\stem}[1]{\emph{#1}"~\xspace}
-\newcommand{\suff}[1]{"~\emph{#1}\xspace}
-\newcommand{\suffix}[1]{"~\emph{#1}\xspace}
-\newcommand{\infix}[1]{"~\emph{#1}"~\xspace}
+\newcommand{\prefix}[1]{\emph{#1}-\xspace}
+\newcommand{\stem}[1]{\emph{#1}-\xspace}
+\newcommand{\suff}[1]{-\emph{#1}\xspace}
+\newcommand{\suffix}[1]{-\emph{#1}\xspace}
+\newcommand{\infix}[1]{-\emph{#1}-\xspace}
 
 \newcommand{\SC}{Small Clause\xspace}
 
@@ -476,8 +519,11 @@ Derivation}{derivation}\xspace}
 \newcommand{\bards}{"~\emph{bar}"=derivations\xspace}
 \newcommand{\barden}{"~\emph{bar}"=Derivationen\xspace}
 
-\newcommand{\itsdb}{\mbox{\textsf{\lbrack incr tsdb()\rbrack}}\xspace}
-\newcommand{\tsdb}{\mbox{\textsf{\lbrack incr tsdb()\rbrack}}\xspace}
+\newcommand{\itsdb}{\mbox{\textsf{\lbrack incr tsdb()\rbrack}}\indexitsdb}
+\newcommand{\indexitsdb}{\is{incr tsdb()@\mbox{\textsf{\lbrack incr tsdb()\rbrack}}}\xspace}
+\newcommand{\tsdb}{\mbox{\textsf{\ensuremath{\lbrack}incr tsdb()\ensuremath{\rbrack}}}\xspace}
+
+\newcommand{\indexlkb}{\is{Linguistic Knowledge Builder (LKB)}\xspace}
 
 \newcommand{\word}[1]{\emph{#1}\iw{#1}}
 \newcommand{\noword}[1]{\emph{*\,#1}\iw{#1@*\,#1}}
@@ -523,10 +569,12 @@ Derivation}{derivation}\xspace}
 \newcommand{\indexsbcgend}{\is{Construction Grammar (CxG)!Sign-Based|)}\xspace}
 \newcommand{\indexsbxg}{\is{Construction Grammar (CxG)!Sign-Based}\xspace}
 
-\newcommand{\indexutah}{\is{Uniform Theta Assignment Hypothesis (UTAH)}\xspace}
+\newcommand{\indexutah}{\is{Uniformity of Theta Assignment Hypothesis (UTAH)}\xspace}
 
 \newcommand{\dg}{Dependency Grammar\indexdg}
 \newcommand{\indexdg}{\is{Dependency Grammar (DG)}\xspace}
+\newcommand{\indexdgstart}{\is{Dependency Grammar (DG)|(}\xspace}
+\newcommand{\indexdgend}{\is{Dependency Grammar (DG)|)}\xspace}
 
 \newcommand{\wg}{Word Grammar\indexwg}
 \newcommand{\indexwg}{\is{Word Grammar (WG)}\xspace}
@@ -550,6 +598,8 @@ Derivation}{derivation}\xspace}
 \newcommand{\hpsg}{HPSG\indexhpsg}
 
 \newcommand{\indexgpsg}{\is{Generalized Phrase Structure Grammar (GPSG)}\xspace}
+\newcommand{\indexgpsgstart}{\is{Generalized Phrase Structure Grammar (GPSG)|(}\xspace}
+\newcommand{\indexgpsgend}{\is{Generalized Phrase Structure Grammar (GPSG)|)}\xspace}
 \newcommand{\gpsg}{GPSG\indexgpsg}
 
 \newcommand{\indexgb}{\is{Government and Binding (GB)}\xspace}
@@ -561,6 +611,9 @@ Derivation}{derivation}\xspace}
 }
 
 
+\newcommand{\indexlrs}{\is{Lexical Resource Semantics (LRS)}\xspace}
+\newcommand{\indexlrsstart}{\is{Lexical Resource Semantics (LRS)|(}\xspace}
+\newcommand{\indexlrsend}{\is{Lexical Resource Semantics (LRS)|)}\xspace}
 
 
 \newcommand{\indexiqp}{\is{Inherently Negated Quantifier Phrase (IQP)}\xspace}
@@ -585,6 +638,8 @@ Derivation}{derivation}\xspace}
 }
 \newcommand{\indexmrs}{\is{Minimal Recursion Semantics (MRS)}\xspace}
 \newcommand{\mrs}{MRS\indexmrs}
+\newcommand{\indexmrsstart}{\is{Minimal Recursion Semantics (MRS)|(}\xspace}
+\newcommand{\indexmrsend}{\is{Minimal Recursion Semantics (MRS)|)}\xspace}
 
 \newcommand{\indexminimalism}{\is{Minimalism}\xspace}
 
@@ -639,43 +694,45 @@ Derivation}{derivation}\xspace}
 
 
 %% % taken from https://tex.stackexchange.com/a/95079/18561
-%% \newbox\usefulbox
+\newbox\usefulbox
 
-%% \makeatletter
-%% \def\getslant #1{\strip@pt\fontdimen1 #1}
+%\makeatletter
+\def\getslant #1{\strip@pt\fontdimen1 #1}
 
-%% \def\skoverline #1{\mathchoice
-%%  {{\setbox\usefulbox=\hbox{$\m@th\displaystyle #1$}%
-%%     \dimen@ \getslant\the\textfont\symletters \ht\usefulbox
-%%     \divide\dimen@ \tw@ 
-%%     \kern\dimen@ 
-%%     \overline{\kern-\dimen@ \box\usefulbox\kern\dimen@ }\kern-\dimen@ }}
-%%  {{\setbox\usefulbox=\hbox{$\m@th\textstyle #1$}%
-%%     \dimen@ \getslant\the\textfont\symletters \ht\usefulbox
-%%     \divide\dimen@ \tw@ 
-%%     \kern\dimen@ 
-%%     \overline{\kern-\dimen@ \box\usefulbox\kern\dimen@ }\kern-\dimen@ }}
-%%  {{\setbox\usefulbox=\hbox{$\m@th\scriptstyle #1$}%
-%%     \dimen@ \getslant\the\scriptfont\symletters \ht\usefulbox
-%%     \divide\dimen@ \tw@ 
-%%     \kern\dimen@ 
-%%     \overline{\kern-\dimen@ \box\usefulbox\kern\dimen@ }\kern-\dimen@ }}
-%%  {{\setbox\usefulbox=\hbox{$\m@th\scriptscriptstyle #1$}%
-%%     \dimen@ \getslant\the\scriptscriptfont\symletters \ht\usefulbox
-%%     \divide\dimen@ \tw@ 
-%%     \kern\dimen@ 
-%%     \overline{\kern-\dimen@ \box\usefulbox\kern\dimen@ }\kern-\dimen@ }}%
-%%  {}}
-%% \makeatother
+\def\skoverline #1{\mathchoice
+ {{\setbox\usefulbox=\hbox{$\m@th\displaystyle #1$}%
+    \dimen@ \getslant\the\textfont\symletters \ht\usefulbox
+    \divide\dimen@ \tw@ 
+    \kern\dimen@ 
+    \overline{\kern-\dimen@ \box\usefulbox\kern\dimen@ }\kern-\dimen@ }}
+ {{\setbox\usefulbox=\hbox{$\m@th\textstyle #1$}%
+    \dimen@ \getslant\the\textfont\symletters \ht\usefulbox
+    \divide\dimen@ \tw@ 
+    \kern\dimen@ 
+    \overline{\kern-\dimen@ \box\usefulbox\kern\dimen@ }\kern-\dimen@ }}
+ {{\setbox\usefulbox=\hbox{$\m@th\scriptstyle #1$}%
+    \dimen@ \getslant\the\scriptfont\symletters \ht\usefulbox
+    \divide\dimen@ \tw@ 
+    \kern\dimen@ 
+    \overline{\kern-\dimen@ \box\usefulbox\kern\dimen@ }\kern-\dimen@ }}
+ {{\setbox\usefulbox=\hbox{$\m@th\scriptscriptstyle #1$}%
+    \dimen@ \getslant\the\scriptscriptfont\symletters \ht\usefulbox
+    \divide\dimen@ \tw@ 
+    \kern\dimen@ 
+    \overline{\kern-\dimen@ \box\usefulbox\kern\dimen@ }\kern-\dimen@ }}%
+ {}}
+%\makeatother
 
 
 
 \newcommand{\littlev}{little \emph{v}\xspace}
+\newcommand{\Littlev}{Little \emph{v}\xspace}
 \newcommand{\littlevbar}{$\overline{\mbox{\textit{v}}}$\xspace}
 \newcommand{\xbar}{\texorpdfstring{\mbox{$\overline{\mbox{X}}$}}{X̄}\xspace}
 \newcommand{\xbarbar}{\mbox{$\overline{\overline{\mbox{X}}}$}\xspace}
 \newcommand{\baro}[1]{\upshape\mbox{$\overline{\mbox{\textrm{#1}}}$}\xspace}
-\newcommand{\nbar}{\upshape\mbox{$\overline{\mbox{N}}$}\xspace}
+\newcommand{\nbar}{\mbox{$\overline{\mbox{\upshape N}}$}\xspace}
+\newcommand{\nbarrlap}{N\rlap{$'$}\xspace}
 \newcommand{\nbars}{\mbox{$\overline{\mbox{N}}$s}\xspace}
 \newcommand{\abar}{\mbox{$\overline{\mbox{A}}$}\xspace}
 \newcommand{\cbar}{\mbox{$\overline{\mbox{C}}$}\xspace}
@@ -695,14 +752,17 @@ Derivation}{derivation}\xspace}
 \newcommand{\anull}{A$^0$\xspace}%
 \let\azero=\anull
 \newcommand{\dnull}{D$^0$\xspace}%
+\newcommand{\dnullrlap}{D\rlap{$^0$}\xspace}%
 \newcommand{\inull}{I$^0$\xspace}%
 \newcommand{\tnull}{T$^0$\xspace}%
 \newcommand{\xnull}{X$^0$\xspace}%
 \newcommand{\xnulls}{\xnull{}s\xspace}%
 \let\xzero=\xnull
+\let\tzero=\tnull
 \newcommand{\cnull}{C$^0$\xspace}%
 \newcommand{\vnull}{V$^0$\xspace}%
 \newcommand{\nnull}{N$^0$\xspace}%
+\newcommand{\nnullrlap}{N\rlap{$^0$}\xspace}%
 \newcommand{\pnull}{P$^0$\xspace}%
 \newcommand{\agrnull}{Agr$^0$\xspace}%
 
@@ -710,9 +770,11 @@ Derivation}{derivation}\xspace}
 \newcommand{\vPs}{\textit{v}Ps\xspace}%
 
 
-\newcommand{\npnom}{NP[\type{nom}]}
-\newcommand{\npacc}{NP[\type{acc}]}
-\newcommand{\npdat}{NP[\type{dat}]}
+\newcommand{\npnom}{NP[\type{nom}]\xspace}
+\newcommand{\npgen}{NP[\type{gen}]\xspace}
+\newcommand{\npdat}{NP[\type{dat}]\xspace}
+\newcommand{\npacc}{NP[\type{acc}]\xspace}
+\newcommand{\npstr}{NP[\type{str}]\xspace}
 
 
 \newcommand{\biband}{and\xspace}
@@ -722,3 +784,18 @@ Derivation}{derivation}\xspace}
 
 \@ifpackageloaded{hyperref}{\pdfstringdefDisableCommands{\def\vbase{V-Base} }
 \pdfstringdefDisableCommands{\def\vfront{V-Front} }}{}
+
+
+\newcommand{\PREP}{\textsc{prep}\xspace}
+
+\newcommand{\dass}{[dass]\xspace}
+\newcommand{\that}{\spacebr{}that\xspace}
+
+
+\newcommand{\argone}{\textsc{arg1}\xspace}
+\newcommand{\argtwo}{\textsc{arg2}\xspace}
+\newcommand{\argthree}{\textsc{arg3}\xspace}
+
+
+% do nothing. This is just to indicate that the page number was checked.
+\newcommand{\wholepaper}{\xspace}

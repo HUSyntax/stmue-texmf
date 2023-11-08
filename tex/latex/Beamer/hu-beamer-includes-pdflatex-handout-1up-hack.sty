@@ -9,6 +9,9 @@
 %%   Language: LaTeX
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% This is a hack. like the other file but loading of pgnpages just commented out.
+
+
 %\input{fuberlinbeamerincludes}
 
 % use with xelatex
@@ -28,33 +31,6 @@
 
 \usepackage{fontspec}
 
-    \setmainfont[
-    Ligatures={TeX,Common},
-%     Path=\fontpath,
-    PunctuationSpace=0,
-    Numbers={Proportional},
-    BoldFont = LibertinusSerif-Semibold.otf,
-    ItalicFont = LibertinusSerif-Italic.otf,
-    BoldItalicFont = LibertinusSerif-SemiboldItalic.otf,
-    BoldSlantedFont = LibertinusSerif-Semibold.otf,
-    SlantedFont    = LibertinusSerif-Regular.otf,
-    SlantedFeatures = {FakeSlant=0.25},
-    BoldSlantedFeatures = {FakeSlant=0.25},
-    SmallCapsFeatures = {FakeSlant=0},
-    ]{LibertinusSerif-Regular.otf}
-
-\PassOptionsToPackage{no-math}{fontspec}
-
-   %% Provides \setmathfont
-    \usepackage{unicode-math}
-
-    \setmathfont[AutoFakeBold
-%     ,Path=\fontpath
-    ]{LibertinusMath-Regular.otf}
-    \setmathfont[range={cal},StylisticSet=1%,Path=\fontpath
-    ]{XITSMath-Regular.otf}
-    \setmathfont[range={bfcal},StylisticSet=1%,Path=\fontpath
-    ]{XITSMath-Bold.otf}
 
 %\logo{\includegraphics[height=1cm]{fu_dgm_logo}}
 %\titlegraphic{\includegraphics[height=3cm]{identity-grammatik-deutsch-chinesisch-persisch-hindi}}
@@ -72,6 +48,8 @@
 %\lightning
 \usepackage{wasysym}
 
+\usepackage{mycommands}%\spacebr
+
 
 
 % this breaks the length computation for tables that is needed in CCG
@@ -88,27 +66,21 @@
 langsci-lgr,oneline}
 
 \usepackage{my-gb4e-slides}
-%\usepackage{langsci-gb4e}
 
 %\usepackage{forest-v105}
 \usepackage{langsci-forest-setup}
-
-\usetikzlibrary{hobby}
-\usetikzlibrary{calc}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% (Syntactic) Trees
 % package needed: forest
 %
 %% Setting for simple trees
-% commented out 19.04.2021
-% \forestset{
-%       terminus/.style={tier=word, for children={tier=tabular}, for tree={fit=band}, for descendants={no path, align=left, l sep=0pt}},
-%       sn edges original/.style={for tree={parent anchor=south, child anchor=north,align=center,base=top}},
-%       no path/.style={edge path={}},
-%       set me left/.style={calign with current edge, child anchor=north west, for parent={parent anchor=south west}},
-% }
+\forestset{
+      terminus/.style={tier=word, for children={tier=tabular}, for tree={fit=band}, for descendants={no path, align=left, l sep=0pt}},
+      sn edges original/.style={for tree={parent anchor=south, child anchor=north,align=center,base=top}},
+      no path/.style={edge path={}},
+      set me left/.style={calign with current edge, child anchor=north west, for parent={parent anchor=south west}},
+}
 
 
 % http://tex.stackexchange.com/questions/218417/replacing-tree-dvips-connect-nodes-in-a-tabular-environment/218458#218458
@@ -147,32 +119,33 @@ langsci-lgr,oneline}
 \usepackage{eng-date}}
 
 % If we are in handout mode, do 4up.
-\mode<handout>{
-\usepackage{pgfpages}
+% commented out for people with reading problems
+%% \mode<handout>{
+%% \usepackage{pgfpages}
 
-\pgfpagesuselayout{4 on 1}[a4paper, border shrink=5mm, landscape]
+%% \pgfpagesuselayout{4 on 1}[a4paper, border shrink=5mm, landscape]
 
-\pgfpageslogicalpageoptions{1}{border code=\pgfusepath{stroke},
-% resized height=.65\pgfphysicalheight,
-% resized width=.65\pgfphysicalwidth, 
-  center = \pgfpoint{.275\pgfphysicalwidth}{.74\pgfphysicalheight}
-}
-\pgfpageslogicalpageoptions{2}{border code=\pgfusepath{stroke},
-% resized height=.65\pgfphysicalheight,
-% resized width=.65\pgfphysicalwidth,
-  center = \pgfpoint{.725\pgfphysicalwidth}{.74\pgfphysicalheight}
-}
-\pgfpageslogicalpageoptions{3}{border code=\pgfusepath{stroke},
-% resized height=.65\pgfphysicalheight,
-% resized width=.65\pgfphysicalwidth,
-  center = \pgfpoint{.275\pgfphysicalwidth}{.26\pgfphysicalheight}
-}
-\pgfpageslogicalpageoptions{4}{border code=\pgfusepath{stroke},
-% resized height=.65\pgfphysicalheight,
-% resized width=.65\pgfphysicalwidth,
- center = \pgfpoint{.725\pgfphysicalwidth}{.26\pgfphysicalheight}
-}
-}
+%% \pgfpageslogicalpageoptions{1}{border code=\pgfusepath{stroke},
+%% % resized height=.65\pgfphysicalheight,
+%% % resized width=.65\pgfphysicalwidth, 
+%%   center = \pgfpoint{.275\pgfphysicalwidth}{.74\pgfphysicalheight}
+%% }
+%% \pgfpageslogicalpageoptions{2}{border code=\pgfusepath{stroke},
+%% % resized height=.65\pgfphysicalheight,
+%% % resized width=.65\pgfphysicalwidth,
+%%   center = \pgfpoint{.725\pgfphysicalwidth}{.74\pgfphysicalheight}
+%% }
+%% \pgfpageslogicalpageoptions{3}{border code=\pgfusepath{stroke},
+%% % resized height=.65\pgfphysicalheight,
+%% % resized width=.65\pgfphysicalwidth,
+%%   center = \pgfpoint{.275\pgfphysicalwidth}{.26\pgfphysicalheight}
+%% }
+%% \pgfpageslogicalpageoptions{4}{border code=\pgfusepath{stroke},
+%% % resized height=.65\pgfphysicalheight,
+%% % resized width=.65\pgfphysicalwidth,
+%%  center = \pgfpoint{.725\pgfphysicalwidth}{.26\pgfphysicalheight}
+%% }
+%% }
 
 % what does this do?
 %\mode<handout>{
@@ -191,6 +164,53 @@ langsci-lgr,oneline}
 
 \newcommand{\savespace}{\setlength\leftmargini{1em}\subexsep{.5ex}\gblabelsep{.5ex}\exewidth{\exnrfont(\theequation)}}
 
+% Define commands for fonts to be used:
+%
+% 1) regular
+% a. example line
+\newcommand{\exfont}{\normalsize\upshape}
+% b. glossing line
+\newcommand{\glossfont}{\normalsize\upshape}
+% c. translation font
+\newcommand{\transfont}{\small\upshape}
+% d. example number
+\newcommand{\exnrfont}{\exfont\upshape}
+%
+% 2) in footnote
+% a. example line
+\newcommand{\fnexfont}{\footnotesize\upshape}
+% b. glossing line
+\newcommand{\fnglossfont}{\footnotesize\upshape}
+% c. translation font
+\newcommand{\fntransfont}{\scriptsize\upshape}
+% d. example number
+\newcommand{\fnexnrfont}{\fnexfont\upshape}
+
+% new user command for specifying translations:
+%\newcommand{\mytrans}[1]{{\trans`#1'}\vskip.6\baselineskip}
+
+% ---------------------------------------------------------------
+% only internal stuff below this line:
+
+% -------------------
+
+% define internal commands relative to these new font specifications
+\def\ex{\@ifnextchar [{\exnrfont\@ex}{\item\exfont}}
+\def\@ex[#1]#2{\item\@exj[#1]{\exfont#2}}
+
+\def\@exjbg#1{\begin{list}{{\exnrfont#1}}{\@subex{\@jwidth}{.5ex}}\item}
+\def\exi#1{\item[{\exnrfont#1}]\@ifnextchar [{\exnrfont\@exj}{}}
+
+\def\ea{\ifnum\@xnumdepth=0\begin{exe}\else\begin{xlist}[iv.]\fi\ex}
+\def\eal{\begin{exe}\exnrfont\ex\begin{xlist}[iv.]}
+
+
+\renewcommand\trans{\nopagebreak\vskip.25\baselineskip\transfont\parindent0ex}
+% Note that we have also set parindent to 0 in our redefinition of \trans
+
+\renewcommand{\eachwordone}{\exfont}
+\renewcommand{\eachwordtwo}{\glossfont}
+\renewcommand{\eachwordthree}{\glossfont} % same font for both gloss lines
 
 \newcommand{\smallexamples}{\renewcommand{\exfont}{\small\upshape}\renewcommand{\glossfont}{\small\upshape}%
 \exewidth{\exnrfont (\theequation)}}
@@ -224,11 +244,9 @@ langsci-lgr,oneline}
 
 \usepackage{unified-biblatex}
 
-
 %\usepackage{pstricks}
 %\usepackage[usenames]{pstcol}
 \usepackage{pst-node}
-\psset{nodesep=4pt}
 
 \newboolean{colorprint}
 \mode<beamer>{
@@ -406,13 +424,13 @@ langsci-lgr,oneline}
   Sprachwissenschaft des Deutschen / Syntax\\
   Institut für deutsche Sprache und Linguistik\\
   Sprach- und literaturwissenschaftliche Fakultät\\
-  Humboldt-Universität zu Berlin\\[2mm]
+  HU Berlin\\[2mm]
 St.Mueller@hu-berlin.de}
 }{%
 \institute[HU Berlin, Institute for German Language and Linguistics]{
   Institute for German Language and Linguistics, Syntax Lab\\
   Sprach- und literaturwissenschaftliche Fakultät\\
-  Humboldt-Universität zu Berlin\\[2mm]
+  HU Berlin\\[2mm]
 St.Mueller@hu-berlin.de}
 }
 %\date[DLT 2003]{Developments in Language Theory Conference, 2003}
@@ -593,7 +611,7 @@ St.Mueller@hu-berlin.de}
 
 
 
-\newcommand{\frametitlefit}[1]{\frametitle{\onelinetextwidthhack{#1}}}
+\newcommand{\frametitlefit}[1]{\frametitle{\oneline{#1}}}
 
 
 \theoremstyle{example}
@@ -646,13 +664,3 @@ St.Mueller@hu-berlin.de}
 \def\iw#1{}
 \def\il#1{}
 \def\iaright#1{}
-
-
-
-% avoid spacing before and after : 
-% for Situation Semantics
-\DeclareMathSymbol{:}{\mathord}{operators}{"3A}
-
-
-% for \hyp, which is used in the bibliography
-\usepackage{hyphenat}

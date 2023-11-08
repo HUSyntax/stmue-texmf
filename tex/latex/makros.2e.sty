@@ -133,7 +133,7 @@
 %% \newcommand{\iafdata}[1]{\index{autind}{#1|fn{\thefootnote}}}
 
 
-%% \newcommand{\is}[1]{\if@noftnote%
+%% \newcommansd{\is}[1]{\if@noftnote%
 %% \index{subind}{#1}%
 %% \else%
 %% \index{subind}{#1|fn{\thefootnote}}%
@@ -182,8 +182,8 @@
 
 \newcommand{\feat}[1]{\textsc{#1}\isfeat{#1}}
 
-\newcommand{\sub}[1]{\(_{\mbox{\scriptsize\textrm{#1}}}\)}
-\newcommand{\ssub}[1]{\(_{\mbox{\tiny\textrm{#1}}}\)}
+\newcommand{\sub}[1]{\textsubscript{\scriptsize\textrm{#1}}}
+\newcommand{\ssub}[1]{\textsubscript{\tiny\textrm{#1}}}
 
 
 
@@ -267,7 +267,7 @@
 
 \def\docheck{
 \begin{draft}
-{\bf check}
+\textbf{check}
 \end{draft}
 }
 
@@ -357,12 +357,12 @@
 {\iflanguage{german}{%
 die Abbildungen~\ref{#1} und~\ref{#2} \vpageref[]{#1}%
 }% end German
-{s~\ref{#1} and~\ref{#2} \vpageref[]{#1}}}%
+{Figures~\ref{#1} and~\ref{#2} \vpageref[]{#1}}}%
 {\iflanguage{german}{%
 Abbildung~\ref{#1}\vpageref[]{#1} und Abbildung~\ref{#2} \vpageref{#2}%
 }% end German
 {%
-~\ref{#1}\vpageref[]{#1} and Figure~\ref{#2} \vpageref{#2}}}%
+Figure~\ref{#1}\vpageref[]{#1} and Figure~\ref{#2} \vpageref{#2}}}%
 }
 
 
@@ -385,9 +385,13 @@ Abbildung~\ref{#1}\vpageref[]{#1} und Abbildung~\ref{#2} \vpageref{#2}%
 }
 \renewcommand{\reftextcurrent}{}
 
-
-
-\newcommand{\ie}{i.\,e.\@\xspace}
+\newcommand\refORregion[2]{%
+ \vrefpagenum\firstnum{#1}%
+ \vrefpagenum\secondnum{#2}%
+\ifthenelse{\equal\firstnum\secondnum}%
+{\pageref{#1}}%
+{\pageref{#1}--\pageref{#2}}%
+}
 
 \newcommand{\longpage}{\enlargethispage{\baselineskip}}
 
@@ -407,10 +411,10 @@ Abbildung~\ref{#1}\vpageref[]{#1} und Abbildung~\ref{#2} \vpageref{#2}%
 
 
 % LFG arrows taken from Mary Dalrymple's macros
-\def \ups {\mbox{$\uparrow_{\sigma}$}}
-\def \downs {\mbox{$\downarrow_{\sigma}$}}
-\def \up {\hbox {$\uparrow$\kern .2em}}
-\def \down {\hbox {$\downarrow$\kern 0em}}
+\newcommand{\ups}{\mbox{$\uparrow_{\sigma}$}}
+\newcommand{\downs}{\mbox{$\downarrow_{\sigma}$}}
+\newcommand{\up}{\hbox {$\uparrow$\kern .2em}}
+\newcommand{\down}{\hbox {$\downarrow$\kern 0em}}
 
 \newdimen\mothernodedimen
 \def \phraserule #1#2{\setbox1\hbox{#1}%
@@ -421,7 +425,7 @@ Abbildung~\ref{#1}\vpageref[]{#1} und Abbildung~\ref{#2} \vpageref{#2}%
 \def \rulenode #1{\begin{tabular}[t]{c}#1\end{tabular}}
 
 
-\newcommand{\qeq}{$=_q$\xspace}
+%\newcommand{\qeq}{$=_q$\xspace}
 
 % noexpand is needed to be able to use \trace in forest trees with translations 
 % the following definition is better
@@ -442,7 +446,7 @@ Abbildung~\ref{#1}\vpageref[]{#1} und Abbildung~\ref{#2} \vpageref{#2}%
 \newcommand{\mturn}[1]{\begin{turn}{90}#1\end{turn}}
 
 
-\newcommand{\impl}{$\Rightarrow$}
+%\newcommand{\impl}{$\Rightarrow$}
 
 % used in figures to align things like SPR and COMPS
 \newcommand{\feattab}[1]{[\begin{tabular}[t]{@{}l@{}}#1]\end{tabular}}
@@ -474,3 +478,17 @@ Abbildung~\ref{#1}\vpageref[]{#1} und Abbildung~\ref{#2} \vpageref{#2}%
 % to be able to use this in glosses in forest trees
 \robustify\textsc
 \robustify\textit
+
+
+\newcommand{\spacebr}{\hspaceThis{[}}
+
+
+% usefull commands for glossings:
+\newlength{\stmueTmp}
+
+% a) hspace over width of something without showing it
+\newcommand*{\hspaceThis}[1]{\settowidth{\stmueTmp}{#1}\hspace*{\stmueTmp}}
+
+
+% for \hyp in references
+\usepackage{hyphenat}

@@ -55,7 +55,7 @@ $\left\langle\mbox{\upshape\scshape #1}\right\rangle$}%
 
 
 \newcommand{\nliste}[1]{%
-$\left\langle\mbox{#1}\right\rangle$%
+\mbox{$\left\langle\mbox{\upshape\normalfont#1}\right\rangle$}%
 }
 
 \let\semliste=\nliste
@@ -96,6 +96,8 @@ $%
 }%
 }
 
+%\let\phonlist\phonliste
+
 \newcommand{\relliste}[1]{%
 \mbox{%
 $%
@@ -112,7 +114,7 @@ $%
 \mbox{%
 $%
 \left\{%
-\ignorespaces#1%
+\begin{tabular}{@{}l@{}}\ignorespaces#1\end{tabular}%
 \right\}%
 $%
 %\\[-1.5mm]
@@ -185,13 +187,16 @@ $%
 \newlength{\MyetagLength}
 \settowidth{\MyetagLength}{{$\scriptstyle 1$}}
 
+% empty box
 \newcommand{\etag}{\ibox{\rule{0ex}{1.1ex}\hspace{\MyetagLength}}\xspace}
 
 %\newcommand{\tbox}[1]{{\tiny\fbox{#1}}}
 \let\tbox=\iboxt
 
 
-\newcommand{\type}[1]{{\normalfont\itshape #1\/}}
+\newcommand{\type}[1]{\ifmmode\mathnormal{\mathit{#1}}\else\textnormal{\textit{#1}}\fi}
+
+\newcommand{\typeSM}[1]{\ifmmode\mathnormal{\mathit{#1}}\else\textnormal{\textit{#1}}\fi}
 
 
 
@@ -206,3 +211,9 @@ $%
 \adjustbox{valign=c}{%
 \xxms{#1}%
 }}
+
+
+
+\newcommand{\qeq}{$=_q$\xspace}
+
+\newcommand{\impl}{$\Rightarrow$\xspace}

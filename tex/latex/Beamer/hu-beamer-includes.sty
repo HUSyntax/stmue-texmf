@@ -232,6 +232,7 @@ my-gb4e-slides}
 %%%%%%%%% Bibliography
 %%% has to be loaded after the beamer classes since they redefine section
 
+%\if0 
 \usepackage[sectionbib]{natbib}
 \setlength{\bibsep}{1mm}
 \bibpunct[: ]{(}{)}{;}{a}{}{,}
@@ -242,6 +243,14 @@ my-gb4e-slides}
 \let\citew=\citealp
 %\newcommand{\newblock}{}
 
+% to be able to print theta
+\usepackage{textgreek}
+\newcommand{\textgreek}[1]{\csname sulzergreek#1\endcsname}
+\newcommand{\sulzergreekj}{\texttheta}
+
+%\fi
+
+%\usepackage{unified-biblatex}
 
 %%%% end Bibliography
 

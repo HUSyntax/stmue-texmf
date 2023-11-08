@@ -2,7 +2,7 @@
 \def\gbVersion{4e}
 
 % This is the same as my-gb4e-article, except that footnotes
-% are doen by LaTeX-Beamer. There are no examples in footnotes on slides!
+% are done by LaTeX-Beamer. There are no examples in footnotes on slides!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Version 4export (= v. 4 minus the compatibility code)
@@ -186,7 +186,9 @@
 
 \def\exewidth#1{\def\@exwidth{#1}} 
 %\exewidth{(234)}
-\exewidth{(\theequation)}
+%\exewidth{(\theequation)}
+\exewidth{\exnrfont (235)}
+
 
 %% St. Mü. 02.05.2004
 \def\gblabelsep#1{\def\@gblabelsep{#1}}
@@ -282,7 +284,7 @@
 
 
 %%% Lazy abbrevs (HANDLE WITH CARE!)
-\def\ea{\ifnum\@xnumdepth=0\begin{exe}[(34)]\else\begin{xlist}[iv.]\fi\ex}
+\def\ea{\ifnum\@xnumdepth=0\begin{exe}\else\begin{xlist}[iv.]\fi\ex}
 %\def\ea{\ifnum\@xnumdepth=0\begin{exe}[(\theequation)]\else\begin{xlist}[iv.]\fi\ex}
 \def\eas{\begin{samepage}\ifnum\@xnumdepth=0\begin{exe}[(34)]\else\begin{xlist}[iv.]\fi\ex}
 \def\eaa{\ifnum\@xnumdepth=0\begin{exe}[(\theequation)]\else\begin{xlist}[iv.]\fi\ex}
@@ -295,7 +297,7 @@
 % St. Mue. 26.02.00
 \def\eaf#1{\begin{exe}[(iv)]\exi{(#1)}}
 %\def\eal{\begin{exe}[(\theequation)]\ex\begin{xlist}[iv.]}
-\def\eal{\begin{exe}[(34)]\ex\begin{xlist}[iv.]}
+\def\eal{\begin{exe}\ex\begin{xlist}[iv.]}
 \def\eafl#1{\begin{exe}[(iv)]\exi{(#1)}\begin{xlist}[iv.]}
 \def\eaal{\begin{exe}[(\theequation)]\ex\begin{xlist}[iv.]}
 \def\zl{\end{xlist}\end{exe}}
@@ -365,13 +367,6 @@
 
 
 
-
-% usefull commands for glossings:
-\newlength{\stmueTmp}
-
-% a) hspace over width of something without showing it
-\newcommand*{\hspaceThis}[1]{\settowidth{\stmueTmp}{#1}\hspace*{\stmueTmp}}
-
 % Note that we have also set parindent to 0 in \trans again.
 % This overcomes the bug that cgloss4e.sty with amsbook (sfbbook)
 % insists on indenting the line, even though we've set
@@ -380,4 +375,115 @@
 % define mytrans to automatically include quotes
 % this is in gb4e+
 \newcommand{\mytrans}[1]{{\trans`#1'}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                      %%
+%        Font Specifications                                           %%
+%                                                                      %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Define commands for fonts to be used:
+%
+% 1) regular
+% a. example line
+\newcommand{\exfont}{\normalsize\upshape\sffamily}
+% b. glossing line
+\newcommand{\glossfont}{\normalsize\upshape\sffamily}
+% c. translation font
+\newcommand{\transfont}{\normalsize\upshape\sffamily}
+% d. example number
+\newcommand{\exnrfont}{\exfont\upshape\sffamily}
+%
+% 2) in footnote
+% a. example line
+\newcommand{\fnexfont}{\footnotesize\upshape}
+% b. glossing line
+\newcommand{\fnglossfont}{\footnotesize\upshape}
+% c. translation font
+\newcommand{\fntransfont}{\footnotesize\upshape}
+% d. example number
+\newcommand{\fnexnrfont}{\fnexfont\upshape}
+
+\renewcommand{\eachwordone}{\exfont}
+\renewcommand{\eachwordtwo}{\glossfont}
+\renewcommand{\eachwordthree}{\glossfont} % same font for both gloss lines
+
+
+
+%BeGIN Jambox
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Alexis Dimitriadis
+%
+% This is version 0.3 (informal release, Nov. 2003).
+%
+% Line up material a fixed distance from the right margin.  For annotating
+% example sentences, usually with a short note in parentheses.
+% May overflow to the left or right, or line up on the next line as necessary.
+%
+% \jambox[width]{text}	Align 'text' starting 'width' distance from the
+%			right margin (default \the\jamwidth).
+% \jam(something)	Align a note delimited by parentheses (which are
+%			retained).  No optional argument.
+% \jambox*{text}        Set \jamwidth to the width of 'text', then align it.
+%			(\jamwidth stays set for the rest of the environment).
+%
+% Notes:
+%
+% Distance from the right margin can be set to an explicit amount, or to the
+% width of some piece of text, as follows:
+%
+% \jamwidth=2in\relax      Or
+% \settowidth\jamwidth {(``annotation'')}
+%
+% \jamwidth is locally scoped, so it can be set globally or inside an example
+% environment.
+%
+% BUG: Not compatible with ragged-right mode.
+%
+% Incompatibilities: Not useful with the vanilla cgloss4e.sty, which ends
+% glossed lines prematurely.
+% I do have a suitably modified file, cgloss.sty. With it you can do the
+% following:
+% \gll To kimeno. \\
+%      the text \\ \jambox{(Greek)}
+% \trans `The text.'
+
+
+\newdimen\jamwidth \jamwidth=2in
+\def\jambox{\@ifnextchar[{\@jambox}
+	       {\@ifnextchar*{\@jamsetbox}{\@jambox[\the\jamwidth]}}}
+
+% Set width AND display the argument.
+% The star is read and ignored; the argument #1 is boxed, used to set
+% \jamwidth, then passed to \@jambox (which also puts it in \@tempboxa!)
+%
+\def\@jamsetbox*#1{\setbox\@tempboxa\hbox{#1}\jamwidth=\wd\@tempboxa
+  \@jambox[\the\jamwidth]{\box\@tempboxa}}
+
+\def\@jambox[#1]#2{{\setbox\@tempboxa\hbox {#2}%
+  \ifdim \wd\@tempboxa<#1\relax % if label fits in the alloted space:
+    \@tempdima=#1\relax \advance\@tempdima by-\wd\@tempboxa % remaining \hspace
+    \unskip\nobreak\hfill\penalty250 % break line here if necessary
+    \hskip 1.2em minus 1.2em 	  % used when the line extends past the margin
+    \hbox{}\nobreak\hfill\box\@tempboxa\nobreak
+    \hskip\@tempdima minus \@tempdima\hbox{}%
+  \else  % the label is too wide: just right-align it
+    \hfill\penalty50\hbox{}\nobreak\hfill\box\@tempboxa
+  \fi
+  % suppress closing glue:
+  \parfillskip=0pt \finalhyphendemerits=0 \par}}
+% The penalty enables a break, taken only if the line cannot fit.
+% The \hbox{} ensures the next line does not begin with \hfill, which would
+% be discarded if initial.
+% (\vadjust inserts an empty element at the beginning of the next line, so
+% that COULD be used instead of \hbox{}).
+% Algorithm adapted from The TeXBook.
+%
+% The closing \par could be a problem if there is a \parskip...
+
+
 
