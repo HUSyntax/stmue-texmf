@@ -1,0 +1,162 @@
+\documentclass{hu-letter}
+
+
+\usepackage{lipsum}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% Author's Metadata
+
+\newcommand*\sender{Stefan Müller} % sender's name
+
+\newcommand*\degree{Prof. Dr.} % sender's degree
+
+\newcommand*\authortitle{\degree\ \sender } % sender: degree + name
+
+\newcommand*\mail{\href{mailto:St.Mueller@hu-berlin.de}{St.Mueller@hu-berlin.de}} % sender's e-mail
+
+\newcommand*\website{\href{https://hpsg.hu-berlin.de/~stefan/}{https://hpsg.hu-berlin.de/\~{}stefan/}} % sender's website
+
+\newcommand*\officehour{Montag, 14:00–15:00}	% office hours
+
+\newcommand*\telf{$+$49\,30\,2093-9631}
+
+\setkomavar{signature}{
+	\includegraphics[width=50mm]{Stefan-Mueller-1200dpi.pdf}\\ 
+	\authortitle }
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% Letter's Metadata
+
+%\setkomavar{date}{\today}
+
+%% GUTACHTEN: BA / MA
+\setkomavar{subject}{Zweitgutachten: Masterarbeit von XY}
+
+\newcommand*\addressee{Prüfungsbüro}
+
+
+
+%% EINSTELLUNGEN
+%\setkomavar{subject}{Einstellung auf die Ausschreibung: 52/05/23}
+%
+%%% PR 
+%\newcommand*\addressee{Personalrat der studentischen Beschäftigten}
+%
+%%% PA 
+%%\newcommand*\addressee{Abteilung für Personal und Personalentwicklung}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%   	
+% %%% Student metadata (for BA/MA reports)
+
+% \newcommand{\stud}{Name}
+% \newcommand{\studmailinput}{name@hu-berlin.de}
+% 	\newcommand{\studmail}{\href{mailto:\studmailinput}{\studmailinput}}	
+% \newcommand{\mnr}{581876}
+% \newcommand{\papertitle}{Title of thesis}
+% \newcommand{\grade}{2,3}
+
+
+
+%\input{texfiles/localhyphenation}
+
+%% see texfiles/localdocproperties.tex > for the properties of the document
+%% see texfiles/localpachages.tex > (Settings of the page for LETTER) for the properties of the page and "pshape" definition
+
+\bibliography{bib-abbr,biblio}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Toggles
+%% \iftoggle{toggle name}{true}{false}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%\toggletrue{german}
+%\togglefalse{german}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% BEGIN DOCUMENT 
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% BEGIN LETTER 
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{letter}{
+%% ADDRESS	(see texfiles/localmetadata for the commands)
+\tiny{
+	\unishort\ $|$ \faculty ,\\ \institute\ $|$ 10099 Berlin}%
+%	
+\\ \vspace{1cm}
+%
+%%ADDRESSEE	(see texfiles/localmetadata for the commands)
+\footnotesize{
+ 	\addressee \\ -- im Hause --}
+}	
+
+\setkomavar{subject}{Some subject/Betreff}
+
+%% OPENING
+\opening{Sehr geehrte Damen und Herren,}
+%\opening{To whom it may concern,}
+
+
+%% CONTENT OF LETTER
+
+\pshape{24}
+\lipsum[1]
+
+
+\pshape{24}
+\lipsum[1]
+
+
+\pshape{6}
+\lipsum[1]
+
+
+%% CLOSING	(see texfiles/localmetadata)
+\closing{Mit freundlichen Grüßen}
+
+%\closing{Best wishes}
+
+
+%\vspace{1cm}
+%\noindent Mit freundlichen Grüßen,
+%
+%\hspace{10.4cm} %
+%\includegraphics[scale=.04]{graphics/MyP-signature}
+%%\includegraphics[width=50mm]{graphics/HU_Wortmarke_Schwarz.jpg}
+%
+%\begin{tabularx}{\linewidth}{Xr}\cline{2-2}
+%	& \authortitle \\
+%\end{tabularx}
+
+
+%\clearpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%% REFERENCES: 
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% see texfiles/localpackages-letter.tex > for the BibLaTeX commands
+%% see texfiles/localreferences.bib > for the references
+
+\printbibliography[heading=letterbib]
+
+
+\end{letter}
+
+
+\end{document}
+
+
+
+
+
+
+%      <!-- Local IspellDict: de -->

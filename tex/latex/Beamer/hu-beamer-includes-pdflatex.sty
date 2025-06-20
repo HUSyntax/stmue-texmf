@@ -138,7 +138,7 @@ langsci-lgr,oneline}
 
 % makros loads abbreviations and since these use "= it has to be loaded after
 % german
-\usepackage{abbrev,merkmalstruktur,makros.2e}
+\usepackage{abbrev,merkmalstruktur,makros.2020}
 
 %\usepackage{comment} % remove later
 
@@ -224,6 +224,13 @@ langsci-lgr,oneline}
 
 \usepackage{unified-biblatex}
 
+\let\citew\citet
+
+\let\citews\textcites
+
+%\newcommand{\page}{}
+
+\providecommand{\citegen}[2][]{\citeauthor{#2}'s (\citeyear*[#1]{#2})}
 
 %\usepackage{pstricks}
 %\usepackage[usenames]{pstcol}
@@ -651,8 +658,28 @@ St.Mueller@hu-berlin.de}
 
 % avoid spacing before and after : 
 % for Situation Semantics
-\DeclareMathSymbol{:}{\mathord}{operators}{"3A}
+%\DeclareMathSymbol{:}{\mathord}{operators}{"3A}
 
 
 % for \hyp, which is used in the bibliography
 \usepackage{hyphenat}
+
+
+\usepackage{xspace}
+
+\xspaceaddexceptions{\ind \hyp " \ |}
+
+
+
+\RequirePackage[]{silence}
+\WarningsOff[hyperref]
+\WarningsOff[microtype]
+\WarningFilter{latex}{Command \mark} %markboth/markright
+\WarningFilter{scrbook}{\float@addtolist}
+\WarningFilter{biblatex}{Macro 'date+extradate}
+\WarningFilter{microtype}{Unknown slot}
+\WarningFilter{scrbook}{package incompatibility}
+\WarningFilter{todonotes}{The length}
+\WarningFilter{biblatex}{'babel/polyglossia'}
+\hbadness=99999 % get rid of underfull box warnings
+\typeout{Warnings are disabled in HU beamer style for underfull boxes, hyperref, microtype and scrbook package incompatibility, todonotes length and babel/polyglossia csquotes}
