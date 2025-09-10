@@ -26,7 +26,8 @@
 \huberlinlogon{0.89cm}
 
 
-\usepackage{fontspec}
+\usepackage[no-math]{fontspec}
+
 
     \setmainfont[
     Ligatures={TeX,Common},
@@ -43,7 +44,6 @@
     SmallCapsFeatures = {FakeSlant=0},
     ]{LibertinusSerif-Regular.otf}
 
-\PassOptionsToPackage{no-math}{fontspec}
 
    %% Provides \setmathfont
     \usepackage{unicode-math}
@@ -132,9 +132,10 @@ langsci-lgr,oneline}
 
 \usepackage{forest-beamer-setup}
 
-%\usepackage[german]{babel}
+% load these before loading this style file, since language may differ from presentation to presentation.
+%\usepackage[german,USenglish]{babel} % Dann kommt Literatur statt References raus.
 %\usepackage{ngerman} % Dann kommt Literatur statt References raus.
-\usepackage{german}
+%\usepackage{german}
 
 % makros loads abbreviations and since these use "= it has to be loaded after
 % german
@@ -142,7 +143,7 @@ langsci-lgr,oneline}
 
 %\usepackage{comment} % remove later
 
-\iflanguage{german}{
+\iflanguage{ngerman}{
 \usepackage{de-date}}{
 \usepackage{eng-date}}
 
@@ -291,7 +292,7 @@ langsci-lgr,oneline}
 %% %%     }}
 
 
-\newcommand{\outlineheading}{\iflanguage{german}{Gliederung}{Outline}}
+\newcommand{\outlineheading}{\iflanguage{ngerman}{Gliederung}{Outline}}
 
 
 \newcommand{\outline}[1]{%
@@ -327,11 +328,11 @@ langsci-lgr,oneline}
 % %% % use this definition, if you want to see the outlines in the handout
 % \renewcommand{\outline}[1]{%
 % %\beamertemplateemptyfootbar%
-% \fuberlinjustbarfootline
+% \huberlinjustbarfootline
 % \frame{\frametitle{\outlineheading}#1}%
 % %\beamertemplatecopyrightfootframenumber%
-% \fuberlinnormalfootline 
-% \fuberlinpagedec
+% \huberlinnormalfootline 
+% \huberlinpagedec
 % }
 
 
@@ -408,7 +409,7 @@ langsci-lgr,oneline}
 
 \author[Stefan Müller]{%
   Stefan Müller}
-\iflanguage{german}{%
+\iflanguage{ngerman}{%
 \institute[HU Berlin, Institut für deutsche Sprache und Linguistik, Syntax]{
   Sprachwissenschaft des Deutschen / Syntax\\
   Institut für deutsche Sprache und Linguistik\\
@@ -671,6 +672,27 @@ St.Mueller@hu-berlin.de}
 
 
 
+% for showing a specific selection of overlays of a slide in the handout
+% https://tex.stackexchange.com/questions/213986/how-to-include-in-beamer-handout-a-slide-exactly-as-it-appears-in-presentation
+\newif\ifOnBeamerModeTransition
+\newcommand{\slideselection}{1-}%
+\newenvironment{handoutframeselect}[1][1-]{%
+  \begingroup%
+  \mode<handout>{%
+    \gdef\beamer@currentmode{beamer}%
+    \OnBeamerModeTransitiontrue%
+    \renewcommand{\slideselection}{#1}}%
+}{%
+  \ifOnBeamerModeTransition%
+    \OnBeamerModeTransitionfalse%
+    \gdef\beamer@currentmode{handout}%
+  \fi%
+  \endgroup%
+}
+
+
+
+
 \RequirePackage[]{silence}
 \WarningsOff[hyperref]
 \WarningsOff[microtype]
@@ -683,3 +705,7 @@ St.Mueller@hu-berlin.de}
 \WarningFilter{biblatex}{'babel/polyglossia'}
 \hbadness=99999 % get rid of underfull box warnings
 \typeout{Warnings are disabled in HU beamer style for underfull boxes, hyperref, microtype and scrbook package incompatibility, todonotes length and babel/polyglossia csquotes}
+
+
+
+

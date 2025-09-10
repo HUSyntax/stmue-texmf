@@ -1,6 +1,7 @@
 %\section<presentation>*{Literatur}
 
-\section{Literaturverzeichnis}
+%\section{\refname} % is needed since otherwise a subsection information is shown on the very last
+                    % slide. 26.06.2025
 
 %% \frame{
 %%   \frametitle<presentation>{Literatur}
@@ -16,9 +17,9 @@
 %
 % The bug is still there, but the fix does not work any longer. 
 %\iflanguage{german}{\renewcommand{\refname}{Literaturverzeichnis}} % should be set automatically ???
-\iflanguage{german}{\def\insertsectionhead{Literaturverzeichnis}}{\def\insertsectionhead{\refname}}
-%\def\insertsectionhead{\refname}
-%\def\insertsubsectionhead{}
+%\iflanguage{german}{\def\insertsectionhead{Literatur}}{\def\insertsectionhead{\refname}}
+\def\insertsectionhead{\refname}
+\def\insertsubsectionhead{}
 
 \huberlinjustbarfootline
 
@@ -44,8 +45,8 @@
 % no book icon please
 \setbeamertemplate{bibliography item}{}
 
-%\printbibliography
-\printbibliography[heading=bibliography,notkeyword=this] 
+\printbibliography
+%\printbibliography[heading=bibliography,notkeyword=this] 
 
 }
 \end{multicols}
